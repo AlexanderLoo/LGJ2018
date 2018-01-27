@@ -30,11 +30,7 @@ public class ManagerTest : MonoBehaviour
 
         bigSize = new Vector2(213, 287);
         // midSize = new Vector2(.6f, .6f);
-<<<<<<< HEAD
         smallSize = new Vector3(.14f, .1f, 1);
-=======
-        smallSize = new Vector2(30, 30);
->>>>>>> 7049d2a7f864cf3147609c5e7543b906e5a3d8bd
 
         // initialColor = new Color(255, 0, 0, 255);
         // finalColor = new Color(TestImage.color.r, TestImage.color.g, TestImage.color.b, 0);

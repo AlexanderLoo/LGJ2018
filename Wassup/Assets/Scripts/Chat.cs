@@ -20,6 +20,9 @@ public class Chat : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		 
+		if (Input.GetMouseButton(0)||Input.GetMouseButton(1) ||Input.GetMouseButton(2)||Input.GetMouseButton(3)||Input.GetMouseButton(4)||Input.GetMouseButton(5))
+			return;
+
 		if (Input.GetKeyDown (KeyCode.Space)){
 			Verificar (KeyCode.Space);
 			return;

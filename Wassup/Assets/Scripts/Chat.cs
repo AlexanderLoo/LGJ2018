@@ -17,10 +17,12 @@ public class Chat : MonoBehaviour {
 	public int indiceTexto;
 
 	private char[] letras;
+	private bool espera;
 
 	// Use this for initialization
 	void Start () {
 		indiceTexto = 0;
+		espera = false;
 		letras  = dialogoEl[inidiceDialogo].ToCharArray();
 	}
 	
@@ -66,22 +68,24 @@ public class Chat : MonoBehaviour {
 	}
 	
 	private void TerminarTexto (){
-		MostrarTexto();
-		BorrarTexto();
-		inidiceDialogo++;
-		if (inidiceDialogo >= dialogoEl.Length)
-			return;
-		letras  = dialogoEl[inidiceDialogo].ToCharArray();
-	}
-
-	private void MostrarTexto(){
-		mostrarEl[inidiceDialogo].text = cuadroDeTexto.text;
-		mostrarElla[inidiceDialogo].text = dialogoElla[inidiceDialogo];
-
+		StartCoroutine(EsperarEntreMensajes(1f));
+		
 	}
 
 	private void BorrarTexto (){
 		cuadroDeTexto.text = "";
 		indiceTexto = 0;
+	}
+
+	IEnumerator EsperarEntreMensajes (float _tiempo){
+		mostrarEl[inidiceDialogo].text = cuadroDeTexto.text;
+		yield return new WaitForSeconds (_tiempo);
+		mostrarElla[inidiceDialogo].text = dialogoElla[inidiceDialogo];
+		BorrarTexto();
+		inidiceDialogo++;
+		if (inidiceDialogo < dialogoEl.Length)
+			letras  = dialogoEl[inidiceDialogo].ToCharArray();
+
+
 	}
 }

@@ -80,7 +80,8 @@ public class Chat : MonoBehaviour {
 	IEnumerator EsperarEntreMensajes (float _tiempo){
 		mostrarEl[inidiceDialogo].text = cuadroDeTexto.text;
 		yield return new WaitForSeconds (_tiempo);
-		mostrarElla[inidiceDialogo].text = dialogoElla[inidiceDialogo];
+		if (inidiceDialogo < dialogoEl.Length)
+			mostrarElla[inidiceDialogo].text = dialogoElla[inidiceDialogo];
 		BorrarTexto();
 		inidiceDialogo++;
 		if (inidiceDialogo < dialogoEl.Length)

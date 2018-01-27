@@ -30,7 +30,7 @@ public class ManagerTest : MonoBehaviour
 
         bigSize = new Vector3(1, 1, 1);
         // midSize = new Vector2(.6f, .6f);
-        smallSize = new Vector3(.1f, .11f, 1);
+        smallSize = new Vector3(.14f, .1f, 1);
 
         // initialColor = new Color(255, 0, 0, 255);
         // finalColor = new Color(TestImage.color.r, TestImage.color.g, TestImage.color.b, 0);
@@ -72,7 +72,7 @@ public class ManagerTest : MonoBehaviour
         while (t < 1)
         {
             t += Time.deltaTime * animSpeed;
-            AppImage.rectTransform.sizeDelta = Vector2.Lerp(bigSize, smallSize, t);
+            AppImage.rectTransform.localScale = Vector3.Lerp(bigSize, smallSize, t);
 
             yield return new WaitForEndOfFrame();
         }
@@ -86,7 +86,7 @@ public class ManagerTest : MonoBehaviour
         while (t < 1)
         {
             t += Time.deltaTime * animSpeed;
-            AppImage.rectTransform.sizeDelta = Vector2.Lerp(smallSize, bigSize, t);
+            AppImage.rectTransform.localScale = Vector3.Lerp(smallSize, bigSize, t);
 
             yield return new WaitForEndOfFrame();
         }

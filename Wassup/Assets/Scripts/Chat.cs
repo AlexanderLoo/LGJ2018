@@ -21,6 +21,7 @@ public class Chat : MonoBehaviour {
 
 	public string[] palabrasCompletar;
 	public string [] palabrasAnagramas;
+	public string [] mensajeErrores;
 
 	public GameObject el;
 	public GameObject ella;
@@ -36,6 +37,7 @@ public class Chat : MonoBehaviour {
 	private int indiceTexto; //Indice de la letra del texto
 	private int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
 	private int indiceAnagrama;
+	public string verificadorTexto;
 	private int indiceLetraAnagrama;
 	private int indiceCompletarPalabra;
 	private int indiceLetraCompletarPalabra;
@@ -69,10 +71,9 @@ public class Chat : MonoBehaviour {
 		if (espera)
 			return;
 
-		if (inidiceDialogo>= dialogoEl.Length)
+		if (inidiceDialogo>= dialogoEl.Length || inidiceDialogo>= cantidadTextoElla.Length )
 			return;
 
-		Debug.Log (inidiceDialogo);
 		switch (cantidadTextoElla[inidiceDialogo])
 		{
 			case 10: estado = Estado.tapear; break;
@@ -107,6 +108,7 @@ public class Chat : MonoBehaviour {
 			break;
 
 			case "exacto":
+				verificadorTexto = dialogoEl[inidiceDialogo];
 				textosColor.text = dialogoEl[inidiceDialogo];		
 				cuadroDeTexto.text = " ";
 				EscribriCorrectamente();
@@ -130,13 +132,17 @@ public class Chat : MonoBehaviour {
 				if (crearAnagrama){
 					anagrama.enabled = true;
 					textosColor.enabled = true;
-					anagrama.text = palabrasAnagramas[0].Anagram();
+					verificadorTexto = palabrasAnagramas[indiceAnagrama];
+					anagrama.text = palabrasAnagramas[indiceAnagrama].Anagram();
 					crearAnagrama = false;
 					cuadroDeTexto.text = " ";
 				}
 
 				if (Input.GetKeyDown(KeyCode.Return)){
 					CrearTexto (el,70f,mostrarCorrectamente.text);
+					if (verificadorTexto  != mostrarCorrectamente.text){
+						CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
+						}
 					inidiceDialogo++;
 					textosColor.enabled = false;
 					terminarEscribirCorrectamente = true;
@@ -157,6 +163,7 @@ public class Chat : MonoBehaviour {
 			break;
 
 			case "memoria":
+				verificadorTexto = dialogoEl[inidiceDialogo];
 				textosColor.text = dialogoEl[inidiceDialogo];		
 				cuadroDeTexto.text = " ";
 				EscribriCorrectamente();
@@ -254,6 +261,11 @@ public class Chat : MonoBehaviour {
 
 	private void EnviarTexto (){
 		CrearTexto (el,70f,escribriCorrectamente);
+				
+		if (verificadorTexto  != escribriCorrectamente){
+			CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
+		}
+
 		inidiceDialogo++;
 		letras  = dialogoEl[inidiceDialogo].ToCharArray();
 		textosColor.enabled = false;
@@ -261,6 +273,7 @@ public class Chat : MonoBehaviour {
 		mostrarCorrectamente.text = "";
 		textosColor.text = "";
 		escribriCorrectamente = "";
+		
 
 
 	}
@@ -397,7 +410,7 @@ public class Chat : MonoBehaviour {
 		posTexto.anchoredPosition = new Vector3 (posTexto.anchoredPosition.x,posTexto.anchoredPosition.y-50f);
 		if (posTexto.anchoredPosition.y <= -280)
 			padreTextos.GetComponent<RectTransform>().anchoredPosition = new Vector3 (0,padreTextos.GetComponent<RectTransform>().anchoredPosition.y+50f,0 );
-		
+		estado = Estado.tapear;
 	}
 	IEnumerator Memoria (){
 		yield return new WaitForSeconds (2f);

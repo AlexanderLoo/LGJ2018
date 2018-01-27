@@ -1,9 +1,39 @@
 fileFormatVersion: 2
 guid: b7c2894aa52c2eb44bfb97f1b6c1e8e6
-timeCreated: 1517054452
+timeCreated: 1517057107
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Sprite-Sheet GAME JAM 2018_0
+    21300002: Sprite-Sheet GAME JAM 2018_1
+    21300004: Sprite-Sheet GAME JAM 2018_2
+    21300006: Sprite-Sheet GAME JAM 2018_3
+    21300008: Sprite-Sheet GAME JAM 2018_4
+    21300010: Sprite-Sheet GAME JAM 2018_5
+    21300012: Sprite-Sheet GAME JAM 2018_6
+    21300014: Sprite-Sheet GAME JAM 2018_7
+    21300016: Sprite-Sheet GAME JAM 2018_8
+    21300018: Sprite-Sheet GAME JAM 2018_9
+    21300020: Sprite-Sheet GAME JAM 2018_10
+    21300022: Sprite-Sheet GAME JAM 2018_11
+    21300024: Sprite-Sheet GAME JAM 2018_12
+    21300026: Sprite-Sheet GAME JAM 2018_13
+    21300028: Sprite-Sheet GAME JAM 2018_14
+    21300030: Sprite-Sheet GAME JAM 2018_15
+    21300032: Sprite-Sheet GAME JAM 2018_16
+    21300034: Sprite-Sheet GAME JAM 2018_17
+    21300036: Sprite-Sheet GAME JAM 2018_18
+    21300038: Sprite-Sheet GAME JAM 2018_19
+    21300040: Sprite-Sheet GAME JAM 2018_20
+    21300042: Sprite-Sheet GAME JAM 2018_21
+    21300044: Sprite-Sheet GAME JAM 2018_22
+    21300046: Sprite-Sheet GAME JAM 2018_23
+    21300048: Sprite-Sheet GAME JAM 2018_24
+    21300050: Sprite-Sheet GAME JAM 2018_25
+    21300052: Sprite-Sheet GAME JAM 2018_26
+    21300054: Sprite-Sheet GAME JAM 2018_27
+    21300056: Sprite-Sheet GAME JAM 2018_28
+    21300058: Sprite-Sheet GAME JAM 2018_29
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -76,7 +106,397 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_0
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 1850
+        width: 730
+        height: 1049
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_1
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 2777
+        width: 640
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_2
+      rect:
+        serializedVersion: 2
+        x: 2345
+        y: 403
+        width: 3207
+        height: 2490
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_3
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 2622
+        width: 640
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_4
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 2398
+        width: 249
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_5
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 2354
+        width: 163
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_6
+      rect:
+        serializedVersion: 2
+        x: 2024
+        y: 2288
+        width: 219
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_7
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 2300
+        width: 69
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_8
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 2075
+        width: 249
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_9
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 2033
+        width: 163
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_10
+      rect:
+        serializedVersion: 2
+        x: 2024
+        y: 1966
+        width: 219
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_11
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 1977
+        width: 69
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_12
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1291
+        width: 201
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_13
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1597
+        width: 47
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_14
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 1308
+        width: 196
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_15
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1618
+        width: 26
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_16
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 1186
+        width: 47
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_17
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1205
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_18
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 832
+        width: 329
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_19
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 830
+        width: 380
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_20
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1150
+        width: 58
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_21
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 821
+        width: 352
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_22
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 909
+        width: 27
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_23
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 909
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_24
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 812
+        width: 142
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_25
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 273
+        width: 337
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_26
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 248
+        width: 335
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_27
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 248
+        width: 358
+        height: 423
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_28
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 253
+        width: 335
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite-Sheet GAME JAM 2018_29
+      rect:
+        serializedVersion: 2
+        x: 1778
+        y: 253
+        width: 354
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

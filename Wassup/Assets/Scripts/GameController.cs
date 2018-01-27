@@ -21,12 +21,14 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update(){
+		/*
 		Vector3 newPos = new Vector3 (0, spaceInY, 0);
 		//Función de testeo para probar la la funcion del ObjectPool
 		if (Input.GetButtonDown("Jump")) {
 			ObjectPooling.instance.ActiveGameObject (chatBackgrounds[0],newPos);
 			spaceInY += aditionSpacing;
 		}
+		 */
 		if (heartFill.fillAmount == 0) {
 			print ("GameOver");
 		}

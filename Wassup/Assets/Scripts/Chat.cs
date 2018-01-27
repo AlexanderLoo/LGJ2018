@@ -25,8 +25,14 @@ public class Chat : MonoBehaviour {
 	public string[] palabrasCompletar;
 	public string [] palabrasAnagramas;
 
-	public Text [] mostrarEl; // Lista de textos
-	public Text [] mostrarElla; //lista de textos
+	public GameObject el;
+	public GameObject ella;
+
+	//public Text [] mostrarEl; // Lista de textos
+	//public Text [] mostrarElla; //lista de textos
+
+	public RectTransform posTexto;
+	public Transform padreTextos;
 
 	public Text textosColor;
 	public Text anagrama; 
@@ -144,7 +150,12 @@ public class Chat : MonoBehaviour {
 				}
 
 				if (Input.GetKeyDown(KeyCode.Return)){
-					mostrarEl[inidiceDialogo].text = mostrarCorrectamente.text;
+					GameObject _nuevoTexto = Instantiate (el,posTexto.anchoredPosition,transform.rotation);
+					_nuevoTexto.transform.SetParent(padreTextos);
+					_nuevoTexto.GetComponent<RectTransform>().anchoredPosition = new Vector3 (70f,posTexto.anchoredPosition.y,0f);
+					_nuevoTexto.GetComponent<Text>().text = mostrarCorrectamente.text;
+					posTexto.anchoredPosition = new Vector3 (posTexto.anchoredPosition.x,posTexto.anchoredPosition.y-30f);
+					//mostrarEl[inidiceDialogo].text = mostrarCorrectamente.text;
 					inidiceDialogo++;
 					textosColor.enabled = false;
 					terminarEscribirCorrectamente = true;
@@ -261,7 +272,12 @@ public class Chat : MonoBehaviour {
 	}
 
 	private void EnviarTexto (){
-		mostrarEl[inidiceDialogo].text = escribriCorrectamente;
+		GameObject _nuevoTexto = Instantiate (el,posTexto.anchoredPosition,transform.rotation);
+		_nuevoTexto.transform.SetParent(padreTextos);
+		_nuevoTexto.GetComponent<RectTransform>().anchoredPosition = new Vector3 (70f,posTexto.anchoredPosition.y,0f);
+		_nuevoTexto.GetComponent<Text>().text = escribriCorrectamente;
+		posTexto.anchoredPosition = new Vector3 (posTexto.anchoredPosition.x,posTexto.anchoredPosition.y-30f);posTexto.anchoredPosition = new Vector3 (posTexto.anchoredPosition.x,posTexto.anchoredPosition.y-30f);
+		//mostrarEl[inidiceDialogo].text = escribriCorrectamente;
 		inidiceDialogo++;
 		textosColor.enabled = false;
 		terminarEscribirCorrectamente = true;
@@ -363,10 +379,18 @@ public class Chat : MonoBehaviour {
 
 		while (_valor < _repetir){
 			yield return new WaitForSeconds (_tiempo);
-			if (inidiceDialogo < dialogoEl.Length)
-				mostrarElla[inidiceDialogo+indiceDesfaseElla].text = dialogoElla[inidiceDialogo+indiceDesfaseElla];
+			if (inidiceDialogo < dialogoEl.Length){
+				GameObject _nuevoTexto = Instantiate (ella,posTexto.anchoredPosition,transform.rotation);
+				_nuevoTexto.transform.SetParent(padreTextos);
+				_nuevoTexto.GetComponent<RectTransform>().anchoredPosition = new Vector3 (-70f,posTexto.anchoredPosition.y,0f);
+				_nuevoTexto.GetComponent<Text>().text = dialogoElla[inidiceDialogo+indiceDesfaseElla];
+				posTexto.anchoredPosition = new Vector3 (posTexto.anchoredPosition.x,posTexto.anchoredPosition.y-30f);
+				
+				//mostrarElla[inidiceDialogo+indiceDesfaseElla].text = dialogoElla[inidiceDialogo+indiceDesfaseElla];
+			}
 			_valor ++;
 			indiceDesfaseElla++;
+			
 		}
 		indiceDesfaseElla--;
 		inidiceDialogo++;
@@ -375,15 +399,26 @@ public class Chat : MonoBehaviour {
 			letras  = dialogoEl[inidiceDialogo].ToCharArray();
 	}
 	IEnumerator EsperarEntreMensajes (float _tiempo,int _repetir){
-		mostrarEl[inidiceDialogo].text = cuadroDeTexto.text;
+		GameObject _nuevoTexto = Instantiate (el,posTexto.anchoredPosition,transform.rotation);
+		_nuevoTexto.transform.SetParent(padreTextos);
+		_nuevoTexto.GetComponent<RectTransform>().anchoredPosition = new Vector3 (70f,posTexto.anchoredPosition.y,0f);
+		_nuevoTexto.GetComponent<Text>().text = cuadroDeTexto.text;
+		posTexto.anchoredPosition = new Vector3 (posTexto.anchoredPosition.x,posTexto.anchoredPosition.y-30f);
+		//mostrarEl[inidiceDialogo].text = cuadroDeTexto.text;
 		BorrarTexto();
 		yield return new WaitForSeconds (_tiempo);
 
 			if (_repetir >= 2){
 				StartCoroutine (MensajesSeguidos(0.5f,_repetir));
 			} else if (_repetir == 1){
-				if (inidiceDialogo < dialogoEl.Length)
-					mostrarElla[inidiceDialogo+indiceDesfaseElla].text = dialogoElla[inidiceDialogo+indiceDesfaseElla];
+				if (inidiceDialogo < dialogoEl.Length){
+					GameObject _nuevoTextoElla = Instantiate (ella,posTexto.anchoredPosition,transform.rotation);
+					_nuevoTextoElla.transform.SetParent(padreTextos);
+					_nuevoTextoElla.GetComponent<RectTransform>().anchoredPosition = new Vector3 (-70f,posTexto.anchoredPosition.y,0f);
+					_nuevoTextoElla.GetComponent<Text>().text = dialogoElla[inidiceDialogo+indiceDesfaseElla];
+					posTexto.anchoredPosition = new Vector3 (posTexto.anchoredPosition.x,posTexto.anchoredPosition.y-30f);
+					//mostrarElla[inidiceDialogo+indiceDesfaseElla].text = dialogoElla[inidiceDialogo+indiceDesfaseElla];
+				}
 				inidiceDialogo++;
 				if (inidiceDialogo < dialogoEl.Length)
 					letras  = dialogoEl[inidiceDialogo].ToCharArray();

@@ -29,7 +29,7 @@ public class Chat : MonoBehaviour {
 	public Text [] mostrarElla; //lista de textos
 
 	public Text textosColor;
-	public Text Anagrama;
+	public Text anagrama; 
 
 	
 	private string escribriCorrectamente;
@@ -43,14 +43,17 @@ public class Chat : MonoBehaviour {
 	public int inidiceDialogo; //Estado global del texto
 	private int indiceTexto; //Indice de la letra del texto
 	private int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
-
+	
+	private int indiceAnagrama;
+	private int indiceLetraAnagrama;
 	private int indiceCompletarPalabra;
 	private int indiceLetraCompletarPalabra;
 
 
 	private char[] letras;
 	private bool espera;
-	public bool terminarEscribirCorrectamente;
+	private bool terminarEscribirCorrectamente = true;
+	private bool crearAnagrama = true;
 	
 	private char[] listadoLetrasCompletar;
 	private char[] listadoTexto; 
@@ -132,7 +135,33 @@ public class Chat : MonoBehaviour {
 			break;
 
 			case "anagrama":
-				textosColor.enabled = false;
+				if (crearAnagrama){
+					anagrama.enabled = true;
+					textosColor.enabled = true;
+					anagrama.text = palabrasAnagramas[0].Anagram();
+					crearAnagrama = false;
+					cuadroDeTexto.text = " ";
+				}
+
+				if (Input.GetKeyDown(KeyCode.Return)){
+					mostrarEl[inidiceDialogo].text = mostrarCorrectamente.text;
+					inidiceDialogo++;
+					textosColor.enabled = false;
+					terminarEscribirCorrectamente = true;
+					mostrarCorrectamente.text = "";
+					indiceAnagrama++;
+					anagrama.enabled = false;
+				}
+				
+				if (indiceLetraAnagrama >= palabrasAnagramas[indiceAnagrama].Length)
+					return;
+
+				if (palabrasAnagramas[indiceAnagrama][indiceLetraAnagrama].ToString() == ObtenerValor()){
+					mostrarCorrectamente.text += palabrasAnagramas[indiceAnagrama][indiceLetraAnagrama];
+					indiceLetraAnagrama++;
+				}
+
+
 			break;
 
 			case "memoria":
@@ -243,7 +272,8 @@ public class Chat : MonoBehaviour {
 	private void EscribriCorrectamente (){
 		if (terminarEscribirCorrectamente){
 			textosColor.enabled = true;
-			StartCoroutine(Memoria());
+			if (estado == Estado.memoria)
+				StartCoroutine(Memoria());
 			listadoTexto = textosColor.text.ToCharArray();
 			listadoLetrasCompletar = palabrasCompletar[indiceCompletarPalabra].ToCharArray();
 			indiceLetraCompletarPalabra=0;
@@ -260,7 +290,7 @@ public class Chat : MonoBehaviour {
 				mostrarCorrectamente.text = INICIOPINTADOVERDE + escribriCorrectamente +FINPINTADO;
 				_indiceListadoTexto++; 
 				indiceLetraCompletarPalabra++;
-				
+				return;
 			}
 			else 
 				return;

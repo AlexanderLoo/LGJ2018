@@ -6,53 +6,82 @@ using UnityEngine.UI;
 public class Chat : MonoBehaviour {
 
 	public InputField cuadroDeTexto;
-	public string texto;
-	private string nuevoTexto;
-	public int indice;
+	public string[] dialogoEl;
+	public string[] dialogoElla;
 
-	char[] letras;
+	public Text [] mostrarEl;
+	public Text [] mostrarElla;
+	
+	
+	public int inidiceDialogo;
+	public int indiceTexto;
+
+	private char[] letras;
+
 	// Use this for initialization
 	void Start () {
-		indice = 0;
-		letras  = texto.ToCharArray();
+		indiceTexto = 0;
+		letras  = dialogoEl[inidiceDialogo].ToCharArray();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		 
+		//Evita el contacto con el mouse
 		if (Input.GetMouseButton(0)||Input.GetMouseButton(1) ||Input.GetMouseButton(2)||Input.GetMouseButton(3)||Input.GetMouseButton(4)||Input.GetMouseButton(5))
 			return;
 
+		// Verifica al precionar la tecla space
 		if (Input.GetKeyDown (KeyCode.Space)){
 			Verificar (KeyCode.Space);
 			return;
 		}
 
 		if (Input.GetKeyDown (KeyCode.Backspace)){
-			cuadroDeTexto.text = "";
-			indice = 0;
+			BorrarTexto();
 			return;
 
 		}
 
 		if (Input.anyKeyDown)
 			Verificar(KeyCode.Print);
-		
+	
+	}
+
+	private void Verificar (KeyCode _tecla){
+		if (inidiceDialogo >= dialogoEl.Length)
+			return;
+
+		if (indiceTexto < letras.Length){
+			if (letras[indiceTexto] == ' ')
+				if (_tecla.ToString () != "Space")
+					return;
+			
+			cuadroDeTexto.text += letras[indiceTexto];
+			indiceTexto++;  
+		} else {
+			TerminarTexto();
+			
+		}
+	}
+	
+	private void TerminarTexto (){
+		MostrarTexto();
+		BorrarTexto();
+		inidiceDialogo++;
+		if (inidiceDialogo >= dialogoEl.Length)
+			return;
+		letras  = dialogoEl[inidiceDialogo].ToCharArray();
+	}
+
+	private void MostrarTexto(){
+		mostrarEl[inidiceDialogo].text = cuadroDeTexto.text;
+		mostrarElla[inidiceDialogo].text = dialogoElla[inidiceDialogo];
 
 	}
 
-
-	public void Verificar (KeyCode _tecla){
-		
-		if (indice < letras.Length){
-
-			if (letras[indice] == ' '){
-				if (_tecla.ToString () != "Space")
-					return;    
-			}
-
-			cuadroDeTexto.text += letras[indice];
-			indice++;  
-		}
+	private void BorrarTexto (){
+		cuadroDeTexto.text = "";
+		indiceTexto = 0;
 	}
 }

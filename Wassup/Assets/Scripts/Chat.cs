@@ -12,6 +12,8 @@ public class Chat : MonoBehaviour {
 	public Text [] mostrarEl; // Lista de textos
 	public Text [] mostrarElla; //lista de textos
 
+	public string verificadorRepetir;
+
 	public int [] cantidadTextoElla;
 	
 	
@@ -19,8 +21,11 @@ public class Chat : MonoBehaviour {
 	public int indiceTexto; //Indice de la letra del texto
 	public int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
 
+
 	private char[] letras;
 	private bool espera;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -40,22 +45,129 @@ public class Chat : MonoBehaviour {
 
 		// Verifica al precionar la tecla space
 		if (Input.GetKeyDown (KeyCode.Space)){
-			Verificar (KeyCode.Space);
+			Tecleo (KeyCode.Space);
+		
 			return;
 		}
 
 		if (Input.GetKeyDown (KeyCode.Backspace)){
 			BorrarTexto();
 			return;
-
 		}
 
-		if (Input.anyKeyDown)
-			Verificar(KeyCode.Print);
+		if (Input.anyKeyDown){
+			if (Verificar())
+				Tecleo(KeyCode.Print);
+		}
+	}
 	
+	string ObtenerValor (){
+		string _valor = "";
+
+		if (Input.GetKey(KeyCode.A))
+			_valor = "A";
+
+		else if (Input.GetKey(KeyCode.B))
+			_valor = "B";
+		
+		else if (Input.GetKey(KeyCode.C))
+			_valor = "C";
+
+		else if (Input.GetKey(KeyCode.D))
+			_valor = "D";
+		
+		else if (Input.GetKey(KeyCode.E))
+			_valor = "E";
+
+		else if (Input.GetKey(KeyCode.F))
+			_valor = "F";
+		
+		else if (Input.GetKey(KeyCode.G))
+			_valor = "G";
+
+		else if (Input.GetKey(KeyCode.H))
+			_valor = "H";
+		
+		else if (Input.GetKey(KeyCode.I))
+			_valor = "I";
+		
+		else if (Input.GetKey(KeyCode.J))
+			_valor = "J";
+		
+		else if (Input.GetKey(KeyCode.K))
+			_valor = "K";
+
+		else if (Input.GetKey(KeyCode.L))
+			_valor = "L";
+		
+		else if (Input.GetKey(KeyCode.M))
+			_valor = "M";
+			
+		else if (Input.GetKey(KeyCode.N))
+			_valor = "N";
+		
+		else if (Input.GetKey(KeyCode.O))
+			_valor = "O";
+
+		else if (Input.GetKey(KeyCode.P))
+			_valor = "P";
+		
+		else if (Input.GetKey(KeyCode.Q))
+			_valor = "Q";
+
+		else if (Input.GetKey(KeyCode.R))
+			_valor = "R";
+		
+		else if (Input.GetKey(KeyCode.S))
+			_valor = "S";
+
+		else if (Input.GetKey(KeyCode.T))
+			_valor = "T";
+		
+		else if (Input.GetKey(KeyCode.U))
+			_valor = "U";
+			
+		else if (Input.GetKey(KeyCode.V))
+			_valor = "V";
+
+		else if (Input.GetKey(KeyCode.W))
+			_valor = "w";
+
+		else if (Input.GetKey(KeyCode.X))
+			_valor = "X";
+
+		else if (Input.GetKey(KeyCode.Y))
+			_valor = "Y";
+		
+		else if (Input.GetKey(KeyCode.Z))
+			_valor = "Z";
+
+		return _valor.ToLower();
 	}
 
-	private void Verificar (KeyCode _tecla){
+	bool Verificar (){
+		verificadorRepetir += ObtenerValor();
+		char[] _cantidad = verificadorRepetir.ToCharArray();
+
+		
+
+		if (_cantidad.Length >= 4){
+			
+
+			if (_cantidad[0] == _cantidad[2] || _cantidad[1] == _cantidad[3]){
+				if (_cantidad[_cantidad.Length-1] != _cantidad[3] && _cantidad[_cantidad.Length-1] != _cantidad[2] ){
+					verificadorRepetir=""; 
+					return true;
+				} else 
+					return false;
+			}
+			else
+				verificadorRepetir=""; 
+				return true;
+		}
+		return true;
+	}
+	private void Tecleo (KeyCode _tecla){
 		if (inidiceDialogo >= dialogoEl.Length)
 			return;
 
@@ -69,8 +181,7 @@ public class Chat : MonoBehaviour {
 			cuadroDeTexto.text += letras[indiceTexto];
 			indiceTexto++;  
 		} else {
-			TerminarTexto();
-			
+			TerminarTexto();			
 		}
 	}
 	

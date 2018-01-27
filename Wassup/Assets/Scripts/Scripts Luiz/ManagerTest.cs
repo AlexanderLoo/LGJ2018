@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class ManagerTest : MonoBehaviour
 {
 
-    public Image TestImage;
+    public Image BackgroundImage;
+    public Image AppImage;
 
     public float animSpeed;
     public float colorSpeed;
     public float moveSpeed;
 
-    private Vector3 bigSize;
-    private Vector3 midSize;
-    private Vector3 smallSize;
+    private Vector2 bigSize;
+    // private Vector3 midSize;
+    private Vector2 smallSize;
 
     private Vector2 initialPos;
     private Vector2 finalPos;
@@ -27,15 +28,15 @@ public class ManagerTest : MonoBehaviour
     void Start()
     {
 
-        bigSize = new Vector3(1, 1, 1);
-        midSize = new Vector3(.6f, .6f, .6f);
-        smallSize = new Vector3(.1f, .062f, .1f);
+        bigSize = new Vector2(213, 287);
+        // midSize = new Vector2(.6f, .6f);
+        smallSize = new Vector2(30, 30);
 
-        initialColor = new Color(255, 0, 0, 255);
-        finalColor = new Color(TestImage.color.r, TestImage.color.g, TestImage.color.b, 0);
+        // initialColor = new Color(255, 0, 0, 255);
+        // finalColor = new Color(TestImage.color.r, TestImage.color.g, TestImage.color.b, 0);
 
-        initialPos = TestImage.rectTransform.anchoredPosition;
-        finalPos = new Vector3(-213, TestImage.rectTransform.anchoredPosition.y);
+        initialPos = BackgroundImage.rectTransform.anchoredPosition;
+        finalPos = new Vector3(-213, BackgroundImage.rectTransform.anchoredPosition.y);
 
     }
 
@@ -71,7 +72,7 @@ public class ManagerTest : MonoBehaviour
         while (t < 1)
         {
             t += Time.deltaTime * animSpeed;
-            TestImage.rectTransform.localScale = Vector3.Lerp(bigSize, smallSize, t);
+            AppImage.rectTransform.sizeDelta = Vector2.Lerp(bigSize, smallSize, t);
 
             yield return new WaitForEndOfFrame();
         }
@@ -85,7 +86,7 @@ public class ManagerTest : MonoBehaviour
         while (t < 1)
         {
             t += Time.deltaTime * animSpeed;
-            TestImage.rectTransform.localScale = Vector3.Lerp(smallSize, bigSize, t);
+            AppImage.rectTransform.sizeDelta = Vector2.Lerp(smallSize, bigSize, t);
 
             yield return new WaitForEndOfFrame();
         }
@@ -97,7 +98,7 @@ public class ManagerTest : MonoBehaviour
         while (t < 1)
         {
             t += Time.deltaTime * moveSpeed;
-            TestImage.rectTransform.anchoredPosition = Vector2.Lerp(initialPos, finalPos, t);
+            BackgroundImage.rectTransform.anchoredPosition = Vector2.Lerp(initialPos, finalPos, t);
 
             yield return new WaitForEndOfFrame();
 
@@ -111,7 +112,7 @@ public class ManagerTest : MonoBehaviour
         while (t < 1)
         {
             t += Time.deltaTime * moveSpeed;
-            TestImage.rectTransform.anchoredPosition = Vector2.Lerp(finalPos, initialPos, t);
+            BackgroundImage.rectTransform.anchoredPosition = Vector2.Lerp(finalPos, initialPos, t);
 
             yield return new WaitForEndOfFrame();
 

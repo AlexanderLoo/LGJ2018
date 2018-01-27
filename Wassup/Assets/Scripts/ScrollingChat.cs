@@ -6,6 +6,7 @@ public class ScrollingChat : MonoBehaviour {
 
 	private RectTransform _transform;
 	public float maxInY = 2000;
+	public float moveInYAmount = 10;
 
 	void Start(){
 
@@ -14,8 +15,8 @@ public class ScrollingChat : MonoBehaviour {
 
 	void Update(){
 
-		_transform.Translate (Vector3.up * 10);
 		Reposition ();
+		MovingScroll ();
 	}
 
 	void Reposition(){
@@ -24,6 +25,14 @@ public class ScrollingChat : MonoBehaviour {
 			Vector3 newPosition = _transform.position;
 			newPosition.y -= _transform.sizeDelta.y * 2;
 			_transform.position = newPosition;
+		}
+	}
+
+	void MovingScroll(){
+
+		//Solo para testeo
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			_transform.Translate (Vector3.up * moveInYAmount);
 		}
 	}
 }

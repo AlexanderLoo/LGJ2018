@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Chat : MonoBehaviour {
 
+	const string INICIOPINTADOVERDE = "<color=#008000ff>";
+	const string FINPINTADO = "</color>";
 	public InputField cuadroDeTexto; //Input field para escribir
 	public string[] dialogoEl; //Lista de dialogos tuyos
 	public string[] dialogoElla; //Lista de dialogos de ella
@@ -12,18 +14,30 @@ public class Chat : MonoBehaviour {
 	public Text [] mostrarEl; // Lista de textos
 	public Text [] mostrarElla; //lista de textos
 
-	public string verificadorRepetir;
+	public Text [] textosColor;
+	
+	private string escribriCorrectamente;
+	public Text mostrarCorrectamente;
+
+	private string verificadorRepetir;
 
 	public int [] cantidadTextoElla;
 	
 	
-	public int inidiceDialogo; //Estado global del texto
-	public int indiceTexto; //Indice de la letra del texto
-	public int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
+	private int inidiceDialogo; //Estado global del texto
+	private int indiceTexto; //Indice de la letra del texto
+	private int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
 
 
 	private char[] letras;
 	private bool espera;
+	public bool terminarEscribirCorrectamente;
+
+	public char[] listadoTexto; 
+	public int _indiceListadoTexto;
+
+
+	
 
 
 
@@ -38,6 +52,13 @@ public class Chat : MonoBehaviour {
 	void Update () {
 		if (espera)
 			return;
+
+		//Comentar estas 2 lineas para probar el texto antiguo
+		EscribriCorrectamente();
+		return;
+
+
+		
 		 
 		//Evita el contacto con el mouse
 		if (Input.GetMouseButton(0)||Input.GetMouseButton(1) ||Input.GetMouseButton(2)||Input.GetMouseButton(3)||Input.GetMouseButton(4)||Input.GetMouseButton(5))
@@ -141,15 +162,37 @@ public class Chat : MonoBehaviour {
 		
 		else if (Input.GetKey(KeyCode.Z))
 			_valor = "Z";
+		else if (Input.GetKey(KeyCode.Space))
+			_valor= " ";
 
 		return _valor.ToLower();
+	}
+
+	private void EscribriCorrectamente (){
+		if (terminarEscribirCorrectamente){
+			listadoTexto = textosColor[0].text.ToCharArray(); 
+			_indiceListadoTexto = 0;
+			terminarEscribirCorrectamente = false;
+		} 
+
+		if (_indiceListadoTexto >= listadoTexto.Length )
+			return;
+
+		if (listadoTexto[_indiceListadoTexto].ToString().ToLower()==ObtenerValor()){
+			if (_indiceListadoTexto ==0)
+				escribriCorrectamente += listadoTexto[_indiceListadoTexto].ToString().ToUpper();
+			else
+				escribriCorrectamente += listadoTexto[_indiceListadoTexto];
+			mostrarCorrectamente.text = INICIOPINTADOVERDE + escribriCorrectamente +FINPINTADO;
+			_indiceListadoTexto++; 
+
+		}
+
 	}
 
 	bool Verificar (){
 		verificadorRepetir += ObtenerValor();
 		char[] _cantidad = verificadorRepetir.ToCharArray();
-
-		
 
 		if (_cantidad.Length >= 4){
 			

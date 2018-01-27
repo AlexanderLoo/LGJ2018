@@ -23,11 +23,13 @@ public class Chat : MonoBehaviour {
 	public string[] dialogoElla; //Lista de dialogos de ella
 
 	public string[] palabrasCompletar;
+	public string [] palabrasAnagramas;
 
 	public Text [] mostrarEl; // Lista de textos
 	public Text [] mostrarElla; //lista de textos
 
 	public Text textosColor;
+	public Text Anagrama;
 
 	
 	private string escribriCorrectamente;
@@ -108,6 +110,7 @@ public class Chat : MonoBehaviour {
 						Tecleo(KeyCode.Print);
 				}
 			break;
+
 			case "exacto":
 				textosColor.text = dialogoEl[inidiceDialogo];		
 				cuadroDeTexto.text = " ";
@@ -126,8 +129,8 @@ public class Chat : MonoBehaviour {
 					EnviarTexto();
 					indiceCompletarPalabra++;
 				}
-
 			break;
+
 			case "anagrama":
 				textosColor.enabled = false;
 			break;
@@ -138,7 +141,6 @@ public class Chat : MonoBehaviour {
 				EscribriCorrectamente();
 				if (Input.GetKeyDown(KeyCode.Return))
 					EnviarTexto();
-				
 			break;
 		}
 	}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScrollingChat : MonoBehaviour {
 
 	private RectTransform _transform;
+	//Máximo en Y para cambiar de posición 
 	public float maxInY = 2000;
 	public float moveInYAmount = 10;
 

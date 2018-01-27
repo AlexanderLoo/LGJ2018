@@ -13,9 +13,9 @@ public class ManagerTest : MonoBehaviour
     public float colorSpeed;
     public float moveSpeed;
 
-    private Vector2 bigSize;
+    private Vector3 bigSize;
     // private Vector3 midSize;
-    private Vector2 smallSize;
+    private Vector3 smallSize;
 
     private Vector2 initialPos;
     private Vector2 finalPos;
@@ -28,7 +28,7 @@ public class ManagerTest : MonoBehaviour
     void Start()
     {
 
-        bigSize = new Vector2(213, 287);
+        bigSize = new Vector3(1, 1, 1);
         // midSize = new Vector2(.6f, .6f);
         smallSize = new Vector3(.14f, .1f, 1);
 

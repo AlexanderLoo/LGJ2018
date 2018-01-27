@@ -53,7 +53,7 @@ public class Chat : MonoBehaviour {
 		if (espera)
 			return;
 
-		
+		//Comentar estas 2 lineas para probar el texto antiguo
 		EscribriCorrectamente();
 		return;
 

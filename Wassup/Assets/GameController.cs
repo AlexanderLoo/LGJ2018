@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 	public RectTransform[] chatBackgrounds;
 	public Image[] wifiSignals;
 	private int signalIndex;
+	public Image heartFill;
 	public bool gameOver;
 	//Espaciado entre textos
 	public float spaceInY = 350;
@@ -25,6 +26,9 @@ public class GameController : MonoBehaviour {
 		if (Input.GetButtonDown("Jump")) {
 			ObjectPooling.instance.ActiveGameObject (chatBackgrounds[0],newPos);
 			spaceInY += aditionSpacing;
+		}
+		if (heartFill.fillAmount == 0) {
+			print ("GameOver");
 		}
 	}
 	//Función para remover la imagen de la señal wifi según su índice
@@ -48,5 +52,9 @@ public class GameController : MonoBehaviour {
 			signalIndex--;
 		}
 	}
+	//Función que maneja el corazón 	
+	public void HeartFill(float i){
 
+		heartFill.fillAmount += i;
+	}
 }

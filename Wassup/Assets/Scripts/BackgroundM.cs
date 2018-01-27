@@ -10,9 +10,13 @@ public class BackgroundM : MonoBehaviour
 	public GameObject player;
 	public float forcey;
 	private Rigidbody2D body;
+	string password="perro";
+
 	void Start () 
 	{
 		body = GetComponent<Rigidbody2D> ();
+		print (""+password.Anagram());
+
 	}
 	
 	// Update is called once per frame

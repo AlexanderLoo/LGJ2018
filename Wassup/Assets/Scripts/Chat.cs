@@ -7,14 +7,30 @@ public class Chat : MonoBehaviour {
 
 	const string INICIOPINTADOVERDE = "<color=#008000ff>";
 	const string FINPINTADO = "</color>";
+
+	public enum Estado {
+		tapear,
+		exacto,
+		completar,
+		anagrama,
+		memoria
+	};
+
+	public Estado estado;
+
 	public InputField cuadroDeTexto; //Input field para escribir
 	public string[] dialogoEl; //Lista de dialogos tuyos
 	public string[] dialogoElla; //Lista de dialogos de ella
 
+	public string[] palabrasCompletar;
+	public string [] palabrasAnagramas;
+
 	public Text [] mostrarEl; // Lista de textos
 	public Text [] mostrarElla; //lista de textos
 
-	public Text [] textosColor;
+	public Text textosColor;
+	public Text anagrama; 
+
 	
 	private string escribriCorrectamente;
 	public Text mostrarCorrectamente;
@@ -24,17 +40,24 @@ public class Chat : MonoBehaviour {
 	public int [] cantidadTextoElla;
 	
 	
-	private int inidiceDialogo; //Estado global del texto
+	public int inidiceDialogo; //Estado global del texto
 	private int indiceTexto; //Indice de la letra del texto
 	private int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
+	
+	private int indiceAnagrama;
+	private int indiceLetraAnagrama;
+	private int indiceCompletarPalabra;
+	private int indiceLetraCompletarPalabra;
 
 
 	private char[] letras;
 	private bool espera;
-	public bool terminarEscribirCorrectamente;
-
-	public char[] listadoTexto; 
-	public int _indiceListadoTexto;
+	private bool terminarEscribirCorrectamente = true;
+	private bool crearAnagrama = true;
+	
+	private char[] listadoLetrasCompletar;
+	private char[] listadoTexto; 
+	private int _indiceListadoTexto;
 
 
 	
@@ -50,35 +73,104 @@ public class Chat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
 		if (espera)
 			return;
 
-		//Comentar estas 2 lineas para probar el texto antiguo
-		EscribriCorrectamente();
-		return;
-
-
-		
-		 
-		//Evita el contacto con el mouse
-		if (Input.GetMouseButton(0)||Input.GetMouseButton(1) ||Input.GetMouseButton(2)||Input.GetMouseButton(3)||Input.GetMouseButton(4)||Input.GetMouseButton(5))
+		if (inidiceDialogo >= dialogoEl.Length)
 			return;
 
-		// Verifica al precionar la tecla space
-		if (Input.GetKeyDown (KeyCode.Space)){
-			Tecleo (KeyCode.Space);
-		
-			return;
+		switch (cantidadTextoElla[inidiceDialogo])
+		{
+			case 10: estado = Estado.tapear; break;
+			case 20: estado = Estado.exacto; break;
+			case 30: estado = Estado.completar; break;
+			case 40: estado = Estado.anagrama; break;
+			case 50: estado = Estado.memoria; break;							
 		}
 
-		if (Input.GetKeyDown (KeyCode.Backspace)){
-			BorrarTexto();
-			return;
-		}
+		switch (estado.ToString())
+		{			
+			case "tapear":
+				textosColor.enabled = false;
+				if (Input.GetMouseButton(0)||Input.GetMouseButton(1) ||Input.GetMouseButton(2)||Input.GetMouseButton(3)||Input.GetMouseButton(4)||Input.GetMouseButton(5))
+					return;
 
-		if (Input.anyKeyDown){
-			if (Verificar())
-				Tecleo(KeyCode.Print);
+				// Verifica al precionar la tecla space
+				if (Input.GetKeyDown (KeyCode.Space)){
+					Tecleo (KeyCode.Space);
+					return;
+				}
+
+				if (Input.GetKeyDown (KeyCode.Backspace)){
+					BorrarTexto();
+					return;
+				}
+
+				if (Input.anyKeyDown){
+					if (Verificar())
+						Tecleo(KeyCode.Print);
+				}
+			break;
+
+			case "exacto":
+				textosColor.text = dialogoEl[inidiceDialogo];		
+				cuadroDeTexto.text = " ";
+				EscribriCorrectamente();
+
+				if (Input.GetKeyDown(KeyCode.Return))
+					EnviarTexto();
+				
+			break;
+			case "completar":
+				textosColor.text = dialogoEl[inidiceDialogo];		
+				cuadroDeTexto.text = " ";
+				EscribriCorrectamente();
+
+				if (Input.GetKeyDown(KeyCode.Return)){
+					EnviarTexto();
+					indiceCompletarPalabra++;
+				}
+			break;
+
+			case "anagrama":
+				if (crearAnagrama){
+					anagrama.enabled = true;
+					textosColor.enabled = true;
+					anagrama.text = palabrasAnagramas[0].Anagram();
+					crearAnagrama = false;
+					cuadroDeTexto.text = " ";
+				}
+
+				if (Input.GetKeyDown(KeyCode.Return)){
+					mostrarEl[inidiceDialogo].text = mostrarCorrectamente.text;
+					inidiceDialogo++;
+					textosColor.enabled = false;
+					terminarEscribirCorrectamente = true;
+					mostrarCorrectamente.text = "";
+					indiceAnagrama++;
+					anagrama.enabled = false;
+				}
+				
+				if (indiceLetraAnagrama >= palabrasAnagramas[indiceAnagrama].Length)
+					return;
+
+				if (palabrasAnagramas[indiceAnagrama][indiceLetraAnagrama].ToString() == ObtenerValor()){
+					mostrarCorrectamente.text += palabrasAnagramas[indiceAnagrama][indiceLetraAnagrama];
+					indiceLetraAnagrama++;
+				}
+
+
+			break;
+
+			case "memoria":
+				textosColor.text = dialogoEl[inidiceDialogo];		
+				cuadroDeTexto.text = " ";
+				EscribriCorrectamente();
+				if (Input.GetKeyDown(KeyCode.Return))
+					EnviarTexto();
+			break;
 		}
 	}
 	
@@ -168,15 +260,42 @@ public class Chat : MonoBehaviour {
 		return _valor.ToLower();
 	}
 
+	private void EnviarTexto (){
+		mostrarEl[inidiceDialogo].text = escribriCorrectamente;
+		inidiceDialogo++;
+		textosColor.enabled = false;
+		terminarEscribirCorrectamente = true;
+		mostrarCorrectamente.text = "";
+
+
+	}
 	private void EscribriCorrectamente (){
 		if (terminarEscribirCorrectamente){
-			listadoTexto = textosColor[0].text.ToCharArray(); 
+			textosColor.enabled = true;
+			if (estado == Estado.memoria)
+				StartCoroutine(Memoria());
+			listadoTexto = textosColor.text.ToCharArray();
+			listadoLetrasCompletar = palabrasCompletar[indiceCompletarPalabra].ToCharArray();
+			indiceLetraCompletarPalabra=0;
 			_indiceListadoTexto = 0;
 			terminarEscribirCorrectamente = false;
 		} 
 
 		if (_indiceListadoTexto >= listadoTexto.Length )
 			return;
+
+		if (listadoTexto[_indiceListadoTexto] == '-'){
+			if (listadoLetrasCompletar[indiceLetraCompletarPalabra].ToString() == ObtenerValor()){
+				escribriCorrectamente += listadoLetrasCompletar[indiceLetraCompletarPalabra];
+				mostrarCorrectamente.text = INICIOPINTADOVERDE + escribriCorrectamente +FINPINTADO;
+				_indiceListadoTexto++; 
+				indiceLetraCompletarPalabra++;
+				return;
+			}
+			else 
+				return;
+
+		}
 
 		if (listadoTexto[_indiceListadoTexto].ToString().ToLower()==ObtenerValor()){
 			if (_indiceListadoTexto ==0)
@@ -276,5 +395,10 @@ public class Chat : MonoBehaviour {
 						letras  = dialogoEl[inidiceDialogo].ToCharArray();
 					espera = false;			
 			}
+	}
+
+	IEnumerator Memoria (){
+		yield return new WaitForSeconds (2f);
+		textosColor.enabled = false;	
 	}
 }

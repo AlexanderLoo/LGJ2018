@@ -1,10 +1,6 @@
 fileFormatVersion: 2
 guid: 69c533797602e9b45b86cdaa17ddf809
-<<<<<<< HEAD
-timeCreated: 1517155148
-=======
-timeCreated: 1517155345
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
+timeCreated: 1517155979
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,10 +8,7 @@ TextureImporter:
     21300002: Sprites-que-faltan_1
     21300004: Sprites-que-faltan_2
     21300006: Sprites-que-faltan_3
-<<<<<<< HEAD
   externalObjects: {}
-=======
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -24,6 +17,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -39,10 +34,13 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapMode: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -64,39 +62,24 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
     androidETC2FallbackOverride: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-=======
-  - buildTarget: Standalone
-    maxTextureSize: 2048
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
     androidETC2FallbackOverride: 0
-=======
-  - buildTarget: Android
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -104,23 +87,15 @@ TextureImporter:
       name: Sprites-que-faltan_0
       rect:
         serializedVersion: 2
-<<<<<<< HEAD
-        x: 145
-        y: 1022
-=======
         x: 147
         y: 1020
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
         width: 943
         height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-<<<<<<< HEAD
       physicsShape: []
-=======
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
       tessellationDetail: 0
     - serializedVersion: 2
       name: Sprites-que-faltan_1
@@ -134,42 +109,27 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-<<<<<<< HEAD
       physicsShape: []
-=======
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
       tessellationDetail: 0
     - serializedVersion: 2
       name: Sprites-que-faltan_2
       rect:
         serializedVersion: 2
-<<<<<<< HEAD
-        x: 222
-        y: 173
-=======
         x: 224
         y: 175
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
         width: 243
         height: 455
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-<<<<<<< HEAD
       physicsShape: []
-=======
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
       tessellationDetail: 0
     - serializedVersion: 2
       name: Sprites-que-faltan_3
       rect:
         serializedVersion: 2
-<<<<<<< HEAD
-        x: 595
-=======
         x: 597
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
         y: 493
         width: 163
         height: 149
@@ -177,12 +137,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-<<<<<<< HEAD
       physicsShape: []
-=======
->>>>>>> 4da2e9c439697b75d8d5bb76c6e076717ee86e41
       tessellationDetail: 0
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

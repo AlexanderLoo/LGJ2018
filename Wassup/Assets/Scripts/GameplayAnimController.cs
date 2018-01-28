@@ -97,6 +97,7 @@ public class GameplayAnimController : MonoBehaviour
             }
             _icon.rectTransform.sizeDelta = bigSize;
             _icon.rectTransform.anchoredPosition = bigPos;
+
             if (_icon == AppChat)
             {
                 float z = 0;
@@ -113,11 +114,23 @@ public class GameplayAnimController : MonoBehaviour
             }
             else if (_icon == AppGps)
             {
+                yield return new WaitForSeconds(0.3f);
+                PhoneBackground.alpha = 0;
 
             }
         }
         else if (_toSize == "Small")
         {
+            if (_icon == AppChat)
+            {
+                ChatScreen.alpha = 0;
+            }
+            else if (_icon == AppGps)
+            {
+                yield return new WaitForSeconds(0.3f);
+                PhoneBackground.alpha = 1;
+            }
+
             while (t < 1)
             {
                 t += Time.deltaTime * animSpeed;
@@ -126,6 +139,7 @@ public class GameplayAnimController : MonoBehaviour
 
                 yield return new WaitForEndOfFrame();
             }
+
             StartCoroutine(MoveBackground(_direction));
         }
     }

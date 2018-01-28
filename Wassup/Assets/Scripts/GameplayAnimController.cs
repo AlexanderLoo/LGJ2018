@@ -94,19 +94,45 @@ public class GameplayAnimController : MonoBehaviour
                 _icon.rectTransform.anchoredPosition = Vector3.Lerp(smallPos, bigPos, t);
 
                 yield return new WaitForEndOfFrame();
+            }
+            _icon.rectTransform.sizeDelta = bigSize;
+            _icon.rectTransform.anchoredPosition = bigPos;
 
-                if (_icon == AppChat)
+            if (_icon == AppChat)
+            {
+                float z = 0;
+                while (z < 1)
                 {
+                    z += Time.deltaTime * alphaFadeSpeed;
+                    ChatScreen.alpha = Mathf.Lerp(0, 1, z);
 
+                    yield return new WaitForEndOfFrame();
                 }
-                else if (_icon == AppGps)
-                {
 
-                }
+                ChatScreen.alpha = 1;
+                Chat.chatEncendido = true;
+
+            }
+            else if (_icon == AppGps)
+            {
+                yield return new WaitForSeconds(0.3f);
+                PhoneBackground.alpha = 0;
+
             }
         }
         else if (_toSize == "Small")
         {
+            if (_icon == AppChat)
+            {
+                ChatScreen.alpha = 0;
+                Chat.chatEncendido = false;
+            }
+            else if (_icon == AppGps)
+            {
+                yield return new WaitForSeconds(0.3f);
+                PhoneBackground.alpha = 1;
+            }
+
             while (t < 1)
             {
                 t += Time.deltaTime * animSpeed;
@@ -115,6 +141,7 @@ public class GameplayAnimController : MonoBehaviour
 
                 yield return new WaitForEndOfFrame();
             }
+
             StartCoroutine(MoveBackground(_direction));
         }
     }

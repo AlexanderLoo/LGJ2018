@@ -35,11 +35,11 @@ public class Chat : MonoBehaviour {
 	public int [] cantidadTextoElla;
 
 	//Indices
-	public int inidiceDialogo; //Estado global del texto
+	private int inidiceDialogo; //Estado global del texto
 	private int indiceTexto; //Indice de la letra del texto
-	public int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
+	private int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
 	private int indiceAnagrama;
-	public string verificadorTexto;
+	private string verificadorTexto;
 	private int indiceLetraAnagrama;
 	private int indiceCompletarPalabra;
 	private int indiceLetraCompletarPalabra;

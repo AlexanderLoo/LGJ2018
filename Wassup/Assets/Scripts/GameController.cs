@@ -9,7 +9,8 @@ public class GameController : MonoBehaviour {
 	public Image[] wifiSignals;
 	private int signalIndex;
 	public Image heartFill;
-	public Animator heartAnim, wifiAnim/*, gilbertoAnim, gilbertaAnim*/;
+	public GilbertoAnimation gilbertaAnim, gilbertoAnim;
+	public Animator heartAnim, wifiAnim;
 
 	[HideInInspector]
 	public bool noSignal, gameOver;
@@ -45,11 +46,12 @@ public class GameController : MonoBehaviour {
 			spaceInY += aditionSpacing;
 		}
 		 */
-		if (heartFill.fillAmount == 0) {
-			print ("GameOver");
+		if (heartFill.fillAmount <= 0) {
+			gameOver = true;
 		}
 		DecreseWifiSignal ();
 		DecreseLove ();
+		HeartFillManager ();
 	}
 	//Función para remover la imagen de la señal wifi según su índice
 	public void RemoveSignal(){
@@ -75,6 +77,13 @@ public class GameController : MonoBehaviour {
 	public void HeartFill(float i){
 
 		heartFill.fillAmount += i;
+		//si es valor es negativo
+		if (i < 0) {
+			gilbertaAnim.action = true;
+			if (heartFill.fillAmount > 0.45f) {
+				Invoke ("GilbertaChangeToFalse",3);
+			}
+		}
 	}
 
 	//Reducimos la señal de wifi con el tiempo y dependiendo del estado
@@ -92,22 +101,37 @@ public class GameController : MonoBehaviour {
 
 		timeForLove -= Time.deltaTime;
 		if (timeForLove <= 0) {
-			//heartAnim.SetTrigger ("HeartDamage");
-			//gilbertaAnim.SetTrigger ("Angry");
 			timeForLove = 1;
 			HeartFill (-0.03f);
 		}
 	}
-	//Funciones para mantener corazon latiendo
-	public void AddLove(float i){
+//	//Funciones para mantener corazon latiendo
+//	public void AddLove(float i){
+//
+//		timeForLove += i;
+//	}
+//
+//	public void RemoveLove(float i){
+//
+//		timeForLove -= i;
+//	}
 
-		timeForLove += i;
-		print (timeForLove);
+	void HeartFillManager(){
+
+		if (heartFill.fillAmount < 0.45f) {
+			gilbertaAnim.action = true;
+		} else {
+			gilbertaAnim.action = false;
+		}
 	}
 
-	public void RemoveLove(float i){
+	void GilbertoChangeToFalse(){
 
-		timeForLove -= i;
-		print (timeForLove);
+		gilbertoAnim.action = false;
+	}
+
+	void GilbertaChangeToFalse(){
+
+		gilbertaAnim.action = false;
 	}
 }

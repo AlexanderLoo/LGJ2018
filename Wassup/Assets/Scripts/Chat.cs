@@ -157,6 +157,8 @@ public class Chat : MonoBehaviour {
 					mostrarCorrectamente.text = "";
 					indiceAnagrama++;
 					anagrama.enabled = false;
+					crearAnagrama = true;
+					return;
 				}
 				
 				if (indiceAnagrama < palabrasAnagramas.Length){

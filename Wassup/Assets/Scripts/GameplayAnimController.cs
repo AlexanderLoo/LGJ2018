@@ -94,15 +94,26 @@ public class GameplayAnimController : MonoBehaviour
                 _icon.rectTransform.anchoredPosition = Vector3.Lerp(smallPos, bigPos, t);
 
                 yield return new WaitForEndOfFrame();
-
-                if (_icon == AppChat)
+            }
+            _icon.rectTransform.sizeDelta = bigSize;
+            _icon.rectTransform.anchoredPosition = bigPos;
+            if (_icon == AppChat)
+            {
+                float z = 0;
+                while (z < 1)
                 {
+                    z += Time.deltaTime * alphaFadeSpeed;
+                    ChatScreen.alpha = Mathf.Lerp(0, 1, z);
 
+                    yield return new WaitForEndOfFrame();
                 }
-                else if (_icon == AppGps)
-                {
 
-                }
+                ChatScreen.alpha = 1;
+
+            }
+            else if (_icon == AppGps)
+            {
+
             }
         }
         else if (_toSize == "Small")

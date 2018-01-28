@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour {
 	//Las siguientes variables controlan el tiempo de reducción de cada UI
 	[HideInInspector]
 	public float timeForWifi, timeForLove;
-	private float timer = 15;
+	private float timer = 10;
 	//Espaciado entre textos
 	public float spaceInY = 350;
 	public float aditionSpacing = 50;
@@ -68,10 +68,10 @@ public class GameController : MonoBehaviour {
 	//Función para agregar señal
 	public void AddSignal(){
 
-		wifiSignals [signalIndex].enabled = true;
 		if (signalIndex != 0) {
 			signalIndex--;
 		}
+		wifiSignals [signalIndex].enabled = true;
 	}
 	//Función que maneja el corazón 	
 	public void HeartFill(float i){

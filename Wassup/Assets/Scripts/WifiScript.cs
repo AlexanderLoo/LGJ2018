@@ -18,11 +18,15 @@ public class WifiScript : MonoBehaviour {
 	void Update () {
 		
 	}
-	void OnTriggerEnter2D(Collider2D other) 
+	void OnTriggerStay2D(Collider2D other) 
 	{
 		if (other.gameObject.tag == "wifi") 
 		{
-			Destroy (other.gameObject);
+			if (GameController.instance.signalIndex != 0){
+				GameController.instance.AddSignal();
+				Destroy (other.gameObject);
+			}
+				
 		} 
 
 		else if 

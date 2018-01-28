@@ -44,8 +44,10 @@ public class GameplayAnimController : MonoBehaviour
         smallPos = new Vector2(0, 89);
         bigPos = new Vector2(0, 0);
 
-        leftPos = PhoneBackground.transform.localPosition;
+        leftPos = new Vector3(0, PhoneBackground.transform.localPosition.y, PhoneBackground.transform.localPosition.z);
         rightPos = new Vector3(-279, PhoneBackground.transform.localPosition.y, PhoneBackground.transform.localPosition.z);
+
+        inChat = true;
     }
 
     // Update is called once per frame
@@ -58,10 +60,15 @@ public class GameplayAnimController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
             if (inChat)
+            {
+                inChat = false;
                 StartCoroutine(ScaleIcon(AppChat, "Small", "Right"));
+            }
             else
+            {
+                inChat = true;
                 StartCoroutine(ScaleIcon(AppGps, "Small", "Left"));
-
+            }
     }
 
     private IEnumerator MoveBackground(string _direction)

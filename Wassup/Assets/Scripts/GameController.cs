@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour {
 	//Las siguientes variables controlan el tiempo de reducción de cada UI
 	[HideInInspector]
 	public float timeForWifi, timeForLove;
-	private float timer = 12;
+	private float timer = 10;
 	//Espaciado entre textos
 	public float spaceInY = 350;
 	public float aditionSpacing = 50;
@@ -103,7 +103,7 @@ public class GameController : MonoBehaviour {
 		timeForLove -= Time.deltaTime;
 		if (timeForLove <= 0) {
 			timeForLove = 1;
-			HeartFill (-0.02f);
+			HeartFill (-0.03f);
 		}
 	}
 //	//Funciones para mantener corazon latiendo

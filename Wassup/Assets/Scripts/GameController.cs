@@ -98,4 +98,16 @@ public class GameController : MonoBehaviour {
 			HeartFill (-0.3f);
 		}
 	}
+	//Funciones para mantener corazon latiendo
+	public void AddLove(float i){
+
+		timeForLove += i;
+		print (timeForLove);
+	}
+
+	public void RemoveLove(float i){
+
+		timeForLove -= i;
+		print (timeForLove);
+	}
 }

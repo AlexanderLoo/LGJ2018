@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class NoviaSpawn : MonoBehaviour {
 
 	public GameObject[] pos;

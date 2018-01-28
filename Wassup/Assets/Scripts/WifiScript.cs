@@ -15,11 +15,13 @@ public class WifiScript : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D other) 
 	{
-		if (other.gameObject.tag == "wifi") {
+		if (other.gameObject.tag == "wifi") 
+		{
 			Destroy (other.gameObject);
 		} 
+
 		else if 
-		(other.gameObject.tag == "win") 
+		(other.gameObject.tag == "corazon") 
 		{
 			print ("ganaste");
 		}

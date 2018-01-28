@@ -9,8 +9,6 @@ public class GilbertoAnimation : MonoBehaviour {
 
 	public Sprite[] idleImages;
 	public Sprite[] actionImages;
-	//velocidad en segundos
-	public float speed = 0.5f;
 	public bool action;
 	private float timer;
 	private int index;
@@ -20,20 +18,19 @@ public class GilbertoAnimation : MonoBehaviour {
 	}
 	void Start(){
 
-		timer = speed;
 		StartCoroutine (Flipping ());
 	}
 
 	void Update(){
 		Flipping ();
 		if (action) {
-			AnimationManager (actionImages);
+			AnimationManager (actionImages, 0.08f);
 		} else {
-			AnimationManager (idleImages);
+			AnimationManager (idleImages, 0.5f);
 		}
 	}
 
-	void AnimationManager(Sprite[]spriteList){
+	void AnimationManager(Sprite[]spriteList,float speed){
 
 		timer -= Time.deltaTime;
 		if (timer <= 0) {

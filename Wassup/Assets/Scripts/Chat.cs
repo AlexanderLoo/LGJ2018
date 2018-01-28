@@ -49,6 +49,8 @@ public class Chat : MonoBehaviour {
 	private char[] listadoLetrasCompletar;
 	private char[] listadoTexto; 
 	private int _indiceListadoTexto;
+
+	public AudioSource tecleo;
 	
 	// Use this for initialization
 	void Start () {
@@ -258,6 +260,9 @@ public class Chat : MonoBehaviour {
 		else if (Input.GetKey(KeyCode.Space))
 			_valor= " ";
 
+
+		if (_valor != "")
+			tecleo.Play();
 		return _valor.ToLower();
 	}
 
@@ -304,6 +309,7 @@ public class Chat : MonoBehaviour {
 				mostrarCorrectamente.text = INICIOPINTADOVERDE + escribriCorrectamente +FINPINTADO;
 				_indiceListadoTexto++; 
 				indiceLetraCompletarPalabra++;
+				tecleo.Play();
 				return;
 			}
 			else 
@@ -318,9 +324,8 @@ public class Chat : MonoBehaviour {
 				escribriCorrectamente += listadoTexto[_indiceListadoTexto];
 			mostrarCorrectamente.text = INICIOPINTADOVERDE + escribriCorrectamente +FINPINTADO;
 			_indiceListadoTexto++; 
-
+			tecleo.Play();
 		}
-
 	}
 
 	bool Verificar (){
@@ -349,7 +354,7 @@ public class Chat : MonoBehaviour {
 
 		if (indiceTexto < letras.Length){			
 			cuadroDeTexto.text += letras[indiceTexto];
-			indiceTexto++;  
+			indiceTexto++;  		
 		} else {
 			TerminarTexto();			
 		}
@@ -409,7 +414,7 @@ public class Chat : MonoBehaviour {
 	}
 
 	private void CrearTexto (GameObject _objeto, float _desfase, string _texto){
-		GameObject _nuevoTextoElla = Instantiate (_objeto,posTexto.anchoredPosition,transform.rotation);
+		GameObject _nuevoTextoElla = Instantiate (_objeto,posTexto.anchoredPosition,_objeto.transform.rotation);
 		_nuevoTextoElla.transform.SetParent(padreTextos);
 		_nuevoTextoElla.GetComponent<RectTransform>().anchoredPosition = new Vector3 (_desfase,posTexto.anchoredPosition.y,0f);
 		_nuevoTextoElla.GetComponentInChildren<Text>().text = _texto;

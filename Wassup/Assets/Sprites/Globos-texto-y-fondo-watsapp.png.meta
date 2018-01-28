@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: c236ddd2cc0363e42bd8a646f0ac30a0
-timeCreated: 1517103431
-=======
-<<<<<<< HEAD
-guid: b96bad3f76db591459d219db6d76bf7c
-timeCreated: 1517106912
-=======
-guid: b1fc4ce03666804408f2589d122b09a7
-timeCreated: 1517107096
->>>>>>> f83dc1ead2022cd8991bb49fcbfcc9ac927876ca
->>>>>>> 04300a3dfdd11fa20bea7a98e4415166346c4053
+timeCreated: 1517137920
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Globos-texto-y-fondo-watsapp_0
+    21300002: Globos-texto-y-fondo-watsapp_1
+    21300004: Globos-texto-y-fondo-watsapp_2
+    21300006: Globos-texto-y-fondo-watsapp_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -46,11 +40,11 @@ TextureImporter:
     mipBias: -1
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,17 +69,137 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-    androidETC2FallbackOverride: 0
-=======
-<<<<<<< HEAD
-=======
-    androidETC2FallbackOverride: 0
->>>>>>> f83dc1ead2022cd8991bb49fcbfcc9ac927876ca
->>>>>>> 04300a3dfdd11fa20bea7a98e4415166346c4053
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Tizen
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Samsung TV
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Globos-texto-y-fondo-watsapp_0
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 510
+        width: 434
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Globos-texto-y-fondo-watsapp_1
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 64
+        width: 634
+        height: 857
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Globos-texto-y-fondo-watsapp_2
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 363
+        width: 434
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Globos-texto-y-fondo-watsapp_3
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 147
+        width: 634
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

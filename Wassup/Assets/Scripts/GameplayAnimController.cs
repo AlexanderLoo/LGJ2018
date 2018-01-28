@@ -127,12 +127,16 @@ public class GameplayAnimController : MonoBehaviour
                 }
 
                 ChatScreen.alpha = 1;
+                Chat.chatEncendido = true;
+                BackgroundM.Mover = false;
 
             }
             else if (_icon == AppGps)
             {
                 yield return new WaitForSeconds(0.3f);
                 PhoneBackground.alpha = 0;
+                Chat.chatEncendido = false;
+                BackgroundM.Mover = true;
 
             }
 

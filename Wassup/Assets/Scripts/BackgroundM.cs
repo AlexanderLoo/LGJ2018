@@ -16,7 +16,6 @@ public class BackgroundM : MonoBehaviour
 	void Start () 
 	{
 		body = GetComponent<Rigidbody2D> ();
-		print (""+password.Anagram());
 		Mover = false;
 
 	}

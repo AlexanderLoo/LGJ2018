@@ -16,11 +16,13 @@ public class MenuAnimation : MonoBehaviour
     public Button PlayButton;
     public Button CreditsButton;
     public Button ExitButton;
-    public Button BackButton;
 
     public Image Blackscreen;
     public Color BSColorOff;
     public Color BSColorOn;
+
+    public Image CreditsWindow;
+    public CanvasGroup CreditsPanel;
 
     public float flickSpeed;
     public float flickWaitTime;
@@ -36,7 +38,10 @@ public class MenuAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
 
     }
 
@@ -74,6 +79,7 @@ public class MenuAnimation : MonoBehaviour
 
     private IEnumerator SetBlackscreen()
     {
+        Blackscreen.transform.GetComponentInParent<Animator>().SetTrigger("GameWillPlay");
         float t = 0;
         while (t < 1)
         {
@@ -84,6 +90,12 @@ public class MenuAnimation : MonoBehaviour
         Blackscreen.color = BSColorOn;
     }
 
+    public IEnumerator LoadGame()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("");
+    }
+
     public void ButtonPlay()
     {
         StartCoroutine(SetBlackscreen());
@@ -91,7 +103,7 @@ public class MenuAnimation : MonoBehaviour
 
     public void ButtonCredits()
     {
-
+		
     }
 
     public void ButtonExit()

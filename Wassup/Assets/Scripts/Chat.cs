@@ -71,11 +71,14 @@ public class Chat : MonoBehaviour {
 		
 		Debug.Log (chatEncendido);
 
-		if (!chatEncendido)
+		if (!chatEncendido){
+			modo.text = "Necesitas señal";
 			return;
+		}
 		
 		if (GameController.instance.signalIndex == GameController.instance.wifiSignals.Length-1){
 			sinSeñal.SetActive(true);
+			
 			chatEncendido=false;
 		} else {
 			sinSeñal.SetActive(false);

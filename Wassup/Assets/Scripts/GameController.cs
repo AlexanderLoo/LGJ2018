@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour {
 	public float aditionSpacing = 50;
 
 	void Awake(){
-
 		instance = this;
 	}
 

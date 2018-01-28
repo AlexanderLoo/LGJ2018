@@ -55,7 +55,10 @@ public class Chat : MonoBehaviour {
 
 	public Text modo;
 	public AudioSource tecleo;
-	public GameObject sinSeñal;
+	public AudioSource sinSenalAudio;
+	
+	public GameObject sinSenal;
+	
 
 	
 	// Use this for initialization
@@ -76,12 +79,16 @@ public class Chat : MonoBehaviour {
 			return;
 		}
 		
-		if (GameController.instance.signalIndex == GameController.instance.wifiSignals.Length-1){
-			sinSeñal.SetActive(true);
-			
+		if (GameController.instance.signalIndex == GameController.instance.wifiSignals.Length){
+			if (sinSenal.activeSelf == false)
+				sinSenalAudio.Play();
+
+			sinSenal.SetActive(true);
 			chatEncendido=false;
+
 		} else {
-			sinSeñal.SetActive(false);
+			sinSenal.SetActive(false);
+			
 		}
 
 		if (ellaEmpieza){

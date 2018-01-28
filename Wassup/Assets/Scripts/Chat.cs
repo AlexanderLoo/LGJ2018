@@ -310,12 +310,12 @@ public class Chat : MonoBehaviour {
 			if (verificadorTexto  != escribriCorrectamente)
 				Error();
 			else
-				GameController.instance.HeartFill(0.22f);
+				GameController.instance.HeartFill(0.4f);
 		}else {
 			if (dialogoEl[inidiceDialogo].Length != escribriCorrectamente.Length)
 				Error();
 			else
-				GameController.instance.HeartFill(0.22f);
+				GameController.instance.HeartFill(0.4f);
 		}
 
 		inidiceDialogo++;
@@ -415,7 +415,7 @@ public class Chat : MonoBehaviour {
 			padreTextos.GetComponent<RectTransform>().anchoredPosition = new Vector3 (0,padreTextos.GetComponent<RectTransform>().anchoredPosition.y+50f,0 );
 		estado = Estado.tapear;
 		if (_desfase ==55f )
-			GameController.instance.HeartFill(0.075f);
+			GameController.instance.HeartFill(0.1f);
 	}
 	
 	private void TerminarTexto (){

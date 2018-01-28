@@ -5,12 +5,13 @@ using UnityEngine;
 public class corazon : MonoBehaviour {
 
 	public Transform heart;
+	public GameObject creditos;
 	public bool agrandar;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+		Invoke("Active",5)	;
+		}
 
 	
 	// Update is called once per frame
@@ -30,6 +31,11 @@ public class corazon : MonoBehaviour {
 		if (agrandar == false) {
 			heart.localScale -= new Vector3 (0.01F, 0.01F, 0);
 		}
+	}
+	void Active() {
+creditos.SetActive(true);
+
+		
 	}
 
 }

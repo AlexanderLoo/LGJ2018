@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
 	public static GameController instance;
@@ -47,6 +47,8 @@ public class GameController : MonoBehaviour {
 		 */
 		if (heartFill.fillAmount <= 0) {
 			gameOver = true;
+			SceneManager.LoadScene("LoseScene");
+		
 		}
 		
 		DecreseWifiSignal ();

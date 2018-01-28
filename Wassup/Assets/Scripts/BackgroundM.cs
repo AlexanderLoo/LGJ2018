@@ -10,7 +10,6 @@ public class BackgroundM : MonoBehaviour
 	public GameObject player;
 	public float forcey;
 	private Rigidbody2D body;
-	string password="pokemon";
 	public static bool Mover;
 
 	void Start () 

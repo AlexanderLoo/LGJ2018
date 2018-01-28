@@ -72,7 +72,6 @@ public class Chat : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		Debug.Log (chatEncendido);
 
 		if (!chatEncendido){
 			modo.text = "Necesitas señal";

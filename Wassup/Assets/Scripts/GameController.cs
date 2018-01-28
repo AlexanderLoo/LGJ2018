@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
 
 	public static GameController instance;
 	public Image[] wifiSignals;
-	private int signalIndex;
+	public int signalIndex;
 	public Image heartFill;
 	public GilbertoAnimation gilbertaAnim, gilbertoAnim;
 	public Animator heartAnim, wifiAnim;

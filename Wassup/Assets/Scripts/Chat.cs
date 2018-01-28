@@ -55,11 +55,12 @@ public class Chat : MonoBehaviour {
 
 	public Text modo;
 	public AudioSource tecleo;
+	public GameObject sinSeñal;
 
 	
 	// Use this for initialization
 	void Start () {
-		chatEncendido = true;
+		chatEncendido = true 	;
 		indiceTexto = 0;
 
 		
@@ -68,9 +69,18 @@ public class Chat : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+		Debug.Log (chatEncendido);
+
 		if (!chatEncendido)
 			return;
 		
+		if (GameController.instance.signalIndex == GameController.instance.wifiSignals.Length-1){
+			sinSeñal.SetActive(true);
+			chatEncendido=false;
+		} else {
+			sinSeñal.SetActive(false);
+		}
+
 		if (ellaEmpieza){
 			StartCoroutine (MensajesSeguidos(0.3f,cantidadTextoElla[0]));
 			espera = true;

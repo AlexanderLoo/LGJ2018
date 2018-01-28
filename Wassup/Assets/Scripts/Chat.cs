@@ -35,7 +35,7 @@ public class Chat : MonoBehaviour {
 	public int [] cantidadTextoElla;
 	public int inidiceDialogo; //Estado global del texto
 	private int indiceTexto; //Indice de la letra del texto
-	private int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
+	public int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
 	private int indiceAnagrama;
 	public string verificadorTexto;
 	private int indiceLetraAnagrama;
@@ -95,11 +95,13 @@ public class Chat : MonoBehaviour {
 					Tecleo (KeyCode.Space);
 					return;
 				}
-
+				
+				/*
 				if (Input.GetKeyDown (KeyCode.Backspace)){
 					BorrarTexto();
 					return;
 				}
+				 */
 
 				if (Input.anyKeyDown){
 					if (Verificar())
@@ -114,16 +116,16 @@ public class Chat : MonoBehaviour {
 				EscribriCorrectamente();
 
 				if (Input.GetKeyDown(KeyCode.Return))
-					EnviarTexto();
+					EnviarTexto(true);
 				
 			break;
 			case "completar":
 				textosColor.text = dialogoEl[inidiceDialogo];		
 				cuadroDeTexto.text = " ";
 				EscribriCorrectamente();
-
+				
 				if (Input.GetKeyDown(KeyCode.Return)){
-					EnviarTexto();
+					EnviarTexto(false);
 					indiceCompletarPalabra++;
 				}
 			break;
@@ -168,7 +170,7 @@ public class Chat : MonoBehaviour {
 				cuadroDeTexto.text = " ";
 				EscribriCorrectamente();
 				if (Input.GetKeyDown(KeyCode.Return))
-					EnviarTexto();
+					EnviarTexto(true);
 			break;
 		}
 	}
@@ -259,11 +261,15 @@ public class Chat : MonoBehaviour {
 		return _valor.ToLower();
 	}
 
-	private void EnviarTexto (){
+	private void EnviarTexto (bool _valor){
 		CrearTexto (el,70f,escribriCorrectamente);
-				
-		if (verificadorTexto  != escribriCorrectamente){
-			CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
+		
+		if (_valor){
+			if (verificadorTexto  != escribriCorrectamente)
+				CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
+		}else {
+			if (dialogoEl[inidiceDialogo].Length != escribriCorrectamente.Length)
+				CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
 		}
 
 		inidiceDialogo++;

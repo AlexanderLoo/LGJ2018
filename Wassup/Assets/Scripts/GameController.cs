@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour {
 		if (heartFill.fillAmount <= 0) {
 			gameOver = true;
 		}
+		
 		DecreseWifiSignal ();
 		DecreseLove ();
 		HeartFillManager ();
@@ -56,9 +57,9 @@ public class GameController : MonoBehaviour {
 	//Función para remover la imagen de la señal wifi según su índice
 	public void RemoveSignal(){
 
-		if (signalIndex <= wifiSignals.Length) {
+		if (signalIndex < wifiSignals.Length) {
 			wifiSignals [signalIndex].enabled = false;
-			if (signalIndex != wifiSignals.Length - 1) {
+			if (signalIndex != wifiSignals.Length) {
 				signalIndex++;
 			} else {
 				noSignal = true;
@@ -71,6 +72,7 @@ public class GameController : MonoBehaviour {
 		if (signalIndex != 0) {
 			signalIndex--;
 		}
+
 		wifiSignals [signalIndex].enabled = true;
 	}
 	//Función que maneja el corazón 	
@@ -102,7 +104,7 @@ public class GameController : MonoBehaviour {
 		timeForLove -= Time.deltaTime;
 		if (timeForLove <= 0) {
 			timeForLove = 1;
-			HeartFill (-0.03f);
+			HeartFill (-0.02f);
 		}
 	}
 //	//Funciones para mantener corazon latiendo

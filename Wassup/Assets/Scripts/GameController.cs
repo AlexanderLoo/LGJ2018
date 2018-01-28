@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour {
 	//Las siguientes variables controlan el tiempo de reducción de cada UI
 	[HideInInspector]
 	public float timeForWifi, timeForLove;
-	private float timer = 10;
+	private float timer = 12;
 	//Espaciado entre textos
 	public float spaceInY = 350;
 	public float aditionSpacing = 50;

@@ -267,9 +267,13 @@ public class Chat : MonoBehaviour {
 		if (_valor){
 			if (verificadorTexto  != escribriCorrectamente)
 				Error();
+			else
+				GameController.instance.HeartFill(0.1f);
 		}else {
 			if (dialogoEl[inidiceDialogo].Length != escribriCorrectamente.Length)
 				Error();
+			else
+				GameController.instance.HeartFill(0.1f);
 		}
 
 		inidiceDialogo++;
@@ -283,7 +287,7 @@ public class Chat : MonoBehaviour {
 
 	private void Error (){
 		CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
-		GameController.instance.HeartFill(-0.2f);
+		GameController.instance.HeartFill(-0.25f);
 	}
 	private void EscribriCorrectamente (){
 		if (terminarEscribirCorrectamente){
@@ -365,6 +369,8 @@ public class Chat : MonoBehaviour {
 		if (posTexto.anchoredPosition.y <= -280)
 			padreTextos.GetComponent<RectTransform>().anchoredPosition = new Vector3 (0,padreTextos.GetComponent<RectTransform>().anchoredPosition.y+50f,0 );
 		estado = Estado.tapear;
+		if (_desfase == 70f )
+			GameController.instance.HeartFill(0.05f);
 	}
 	
 	private void TerminarTexto (){

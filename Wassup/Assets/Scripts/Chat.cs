@@ -52,7 +52,9 @@ public class Chat : MonoBehaviour {
 	private char[] listadoTexto; 
 	private int _indiceListadoTexto;
 
+	public Text modo;
 	public AudioSource tecleo;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -70,10 +72,13 @@ public class Chat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 
-
-		if (espera)
+		if (espera){
+			modo.text = "Esperando";
 			return;
+		}
+
 
 		if (inidiceDialogo>= dialogoEl.Length || inidiceDialogo>= cantidadTextoElla.Length )
 			return;
@@ -90,6 +95,7 @@ public class Chat : MonoBehaviour {
 		switch (estado.ToString())
 		{			
 			case "tapear":
+				modo.text = "Rompe el teclado";
 				//Evita detectar los valores del mouse
 				textosColor.enabled = false;
 				if (Input.GetMouseButton(0)||Input.GetMouseButton(1) ||Input.GetMouseButton(2)||Input.GetMouseButton(3)||Input.GetMouseButton(4)||Input.GetMouseButton(5))
@@ -108,6 +114,7 @@ public class Chat : MonoBehaviour {
 			break;
 
 			case "exacto":
+				modo.text = "Escribe la oración";
 				verificadorTexto = dialogoEl[inidiceDialogo];
 				textosColor.text = dialogoEl[inidiceDialogo];		
 				cuadroDeTexto.text = " ";
@@ -118,6 +125,7 @@ public class Chat : MonoBehaviour {
 				
 			break;
 			case "completar":
+				modo.text = "Escribe y completa la oración";
 				textosColor.text = dialogoEl[inidiceDialogo];		
 				cuadroDeTexto.text = " ";
 				EscribriCorrectamente();
@@ -129,6 +137,7 @@ public class Chat : MonoBehaviour {
 			break;
 
 			case "anagrama":
+				modo.text = "Decifra la oración";
 				if (crearAnagrama){
 					anagrama.enabled = true;
 					textosColor.enabled = true;
@@ -165,6 +174,7 @@ public class Chat : MonoBehaviour {
 			break;
 
 			case "memoria":
+				modo.text = "Escribe y recuerda la oración";
 				verificadorTexto = dialogoEl[inidiceDialogo];
 				textosColor.text = dialogoEl[inidiceDialogo];		
 				cuadroDeTexto.text = " ";

@@ -18,6 +18,12 @@ public class WifiScript : MonoBehaviour {
 		if (other.gameObject.tag == "wifi") 
 		{
 			Destroy (other.gameObject);
+		} 
+
+		else if 
+		(other.gameObject.tag == "corazon") 
+		{
+			print ("ganaste");
 		}
 	}
 }

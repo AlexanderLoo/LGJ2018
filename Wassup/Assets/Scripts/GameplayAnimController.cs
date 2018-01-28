@@ -25,6 +25,9 @@ public class GameplayAnimController : MonoBehaviour
     private Vector3 leftPos;
     private Vector3 rightPos;
 
+    public bool isTransitioning;
+    public bool inChat;
+
 
 
     // Use this for initialization
@@ -48,10 +51,16 @@ public class GameplayAnimController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            StartCoroutine(ScaleIcon(AppGps, "Small", "Left"));
-        if (Input.GetKeyDown(KeyCode.D))
-            StartCoroutine(ScaleIcon(AppChat, "Small", "Right"));
+        //     if (Input.GetKeyDown(KeyCode.A))
+        //         StartCoroutine(ScaleIcon(AppGps, "Small", "Left"));
+        //     if (Input.GetKeyDown(KeyCode.D))
+        //         StartCoroutine(ScaleIcon(AppChat, "Small", "Right"));
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+            if (inChat)
+                StartCoroutine(ScaleIcon(AppChat, "Small", "Right"));
+            else
+                StartCoroutine(ScaleIcon(AppGps, "Small", "Left"));
 
     }
 
@@ -85,6 +94,7 @@ public class GameplayAnimController : MonoBehaviour
     private IEnumerator ScaleIcon(Image _icon, string _toSize, string _direction)
     {
         float t = 0;
+
         if (_toSize == "Big")
         {
             while (t < 1)
@@ -110,7 +120,6 @@ public class GameplayAnimController : MonoBehaviour
                 }
 
                 ChatScreen.alpha = 1;
-                Chat.chatEncendido = true;
 
             }
             else if (_icon == AppGps)
@@ -119,13 +128,19 @@ public class GameplayAnimController : MonoBehaviour
                 PhoneBackground.alpha = 0;
 
             }
+
+            isTransitioning = false;
         }
+
         else if (_toSize == "Small")
         {
+            if (isTransitioning)
+                yield break;
+            isTransitioning = true;
+
             if (_icon == AppChat)
             {
                 ChatScreen.alpha = 0;
-                Chat.chatEncendido = false;
             }
             else if (_icon == AppGps)
             {

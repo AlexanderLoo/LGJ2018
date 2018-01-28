@@ -148,7 +148,7 @@ public class Chat : MonoBehaviour {
 				}
 
 				if (Input.GetKeyDown(KeyCode.Return)){
-					CrearTexto (el,70f,mostrarCorrectamente.text);
+					CrearTexto (el,55f,mostrarCorrectamente.text);
 					if (verificadorTexto  != mostrarCorrectamente.text)
 						Error();
 					inidiceDialogo++;
@@ -275,7 +275,7 @@ public class Chat : MonoBehaviour {
 	}
 
 	private void EnviarTexto (bool _valor){
-		CrearTexto (el,70f,escribriCorrectamente);
+		CrearTexto (el,55f,escribriCorrectamente);
 		
 		if (_valor){
 			if (verificadorTexto  != escribriCorrectamente)
@@ -299,7 +299,7 @@ public class Chat : MonoBehaviour {
 	}
 
 	private void Error (){
-		CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
+		CrearTexto(ella,-55,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
 		GameController.instance.HeartFill(-0.25f);
 	}
 	private void EscribriCorrectamente (){
@@ -384,7 +384,7 @@ public class Chat : MonoBehaviour {
 		if (posTexto.anchoredPosition.y <= -280)
 			padreTextos.GetComponent<RectTransform>().anchoredPosition = new Vector3 (0,padreTextos.GetComponent<RectTransform>().anchoredPosition.y+50f,0 );
 		estado = Estado.tapear;
-		if (_desfase == 70f )
+		if (_desfase ==55f )
 			GameController.instance.HeartFill(0.05f);
 	}
 	
@@ -405,7 +405,7 @@ public class Chat : MonoBehaviour {
 		while (_valor < _repetir){
 			yield return new WaitForSeconds (_tiempo);
 			if (inidiceDialogo+indiceDesfaseElla < dialogoElla.Length)
-				CrearTexto (ella,-70f,dialogoElla[inidiceDialogo+indiceDesfaseElla]);
+				CrearTexto (ella,-55f,dialogoElla[inidiceDialogo+indiceDesfaseElla]);
 			
 			_valor ++;
 			indiceDesfaseElla++;
@@ -418,7 +418,7 @@ public class Chat : MonoBehaviour {
 			letras  = dialogoEl[inidiceDialogo].ToCharArray();
 	}
 	IEnumerator EsperarEntreMensajes (float _tiempo,int _repetir){
-		CrearTexto (el,70f,cuadroDeTexto.text);
+		CrearTexto (el,55f,cuadroDeTexto.text);
 		BorrarTexto();
 		yield return new WaitForSeconds (_tiempo);
 
@@ -426,7 +426,7 @@ public class Chat : MonoBehaviour {
 				StartCoroutine (MensajesSeguidos(0.5f,_repetir));
 			} else if (_repetir == 1){
 				if (inidiceDialogo < dialogoEl.Length)
-					CrearTexto (ella,-70f,dialogoElla[inidiceDialogo+indiceDesfaseElla]);
+					CrearTexto (ella,-55f,dialogoElla[inidiceDialogo+indiceDesfaseElla]);
 				
 				inidiceDialogo++;
 				if (inidiceDialogo < dialogoEl.Length)

@@ -10,7 +10,7 @@ public class ManagerTest : MonoBehaviour
     public Image AppImage;
 
     public float animSpeed;
-    public float colorSpeed;
+    // public float colorSpeed;
     public float moveSpeed;
 
     private Vector3 bigSize;

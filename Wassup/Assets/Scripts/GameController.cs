@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
 	public Image[] wifiSignals;
 	private int signalIndex;
 	public Image heartFill;
-	public Animator heartAnim, wifiAnim, gilbertoAnim, gilbertaAnim;
+	public Animator heartAnim, wifiAnim/*, gilbertoAnim, gilbertaAnim*/;
 
 	[HideInInspector]
 	public bool noSignal, gameOver;
@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour {
 		timeForLove -= Time.deltaTime;
 		if (timeForLove <= 0) {
 			//heartAnim.SetTrigger ("HeartDamage");
-			gilbertaAnim.SetTrigger ("Angry");
+			//gilbertaAnim.SetTrigger ("Angry");
 			timeForLove = 1;
 			HeartFill (-0.03f);
 		}

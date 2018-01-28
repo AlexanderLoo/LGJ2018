@@ -150,12 +150,15 @@ public class Chat : MonoBehaviour {
 					anagrama.enabled = false;
 				}
 				
-				if (indiceLetraAnagrama >= palabrasAnagramas[indiceAnagrama].Length)
-					return;
+				if (indiceAnagrama < palabrasAnagramas.Length){
 
-				if (palabrasAnagramas[indiceAnagrama][indiceLetraAnagrama].ToString() == ObtenerValor()){
-					mostrarCorrectamente.text += palabrasAnagramas[indiceAnagrama][indiceLetraAnagrama];
-					indiceLetraAnagrama++;
+					if (indiceLetraAnagrama >= palabrasAnagramas[indiceAnagrama].Length)
+						return;
+
+					if (palabrasAnagramas[indiceAnagrama][indiceLetraAnagrama].ToString() == ObtenerValor()){
+						mostrarCorrectamente.text += palabrasAnagramas[indiceAnagrama][indiceLetraAnagrama];
+						indiceLetraAnagrama++;
+					}
 				}
 
 

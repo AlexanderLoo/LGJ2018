@@ -110,6 +110,7 @@ public class GameplayAnimController : MonoBehaviour
                 }
 
                 ChatScreen.alpha = 1;
+                Chat.chatEncendido = true;
 
             }
             else if (_icon == AppGps)
@@ -124,6 +125,7 @@ public class GameplayAnimController : MonoBehaviour
             if (_icon == AppChat)
             {
                 ChatScreen.alpha = 0;
+                Chat.chatEncendido = false;
             }
             else if (_icon == AppGps)
             {

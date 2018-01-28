@@ -10,7 +10,19 @@ public class GameController : MonoBehaviour {
 	public Image[] wifiSignals;
 	private int signalIndex;
 	public Image heartFill;
-	public bool gameOver;
+	public Animator heartAnim, wifiAnim;
+
+	[HideInInspector]
+	public bool noSignal, gameOver;
+
+	//Estados, si estan usando el chat o usando el mapa
+	[HideInInspector]
+	public bool chatScreen, mapScreen;
+
+	//Las siguientes variables controlan el tiempo de reducción de cada UI
+	[HideInInspector]
+	public float timeForWifi, timeForLove;
+	private float timer = 20;
 	//Espaciado entre textos
 	public float spaceInY = 350;
 	public float aditionSpacing = 50;
@@ -20,6 +32,11 @@ public class GameController : MonoBehaviour {
 		instance = this;
 	}
 
+	void Start(){
+
+		timeForWifi = timer;
+		timeForLove = timer;
+	}
 	void Update(){
 		/*
 		Vector3 newPos = new Vector3 (0, spaceInY, 0);
@@ -32,6 +49,8 @@ public class GameController : MonoBehaviour {
 		if (heartFill.fillAmount == 0) {
 			print ("GameOver");
 		}
+		DecreseWifiSignal ();
+		DecreseLove ();
 	}
 	//Función para remover la imagen de la señal wifi según su índice
 	public void RemoveSignal(){
@@ -58,5 +77,26 @@ public class GameController : MonoBehaviour {
 	public void HeartFill(float i){
 
 		heartFill.fillAmount += i;
+	}
+
+	//Reducimos la señal de wifi con el tiempo y dependiendo del estado
+	void DecreseWifiSignal(){
+
+		timeForWifi -= Time.deltaTime;
+		if (timeForWifi <= 0) {
+			RemoveSignal ();
+			wifiAnim.SetTrigger ("WifiBlinking");
+			timeForWifi = timer;
+		}
+	}
+	//Reducimos el corazón con el tiempo y dependiendo del estado
+	void DecreseLove(){
+
+		timeForLove -= Time.deltaTime;
+		if (timeForLove <= 0) {
+			HeartFill (-0.3f);
+			heartAnim.SetTrigger ("HeartDamage");
+			timeForLove = timer;
+		}
 	}
 }

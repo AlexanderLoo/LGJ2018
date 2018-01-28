@@ -33,6 +33,8 @@ public class Chat : MonoBehaviour {
 	public Text mostrarCorrectamente;
 	private string verificadorRepetir;
 	public int [] cantidadTextoElla;
+
+	//Indices
 	public int inidiceDialogo; //Estado global del texto
 	private int indiceTexto; //Indice de la letra del texto
 	public int indiceDesfaseElla; //Inidce que arregla el desfase entre ella y tu
@@ -88,6 +90,7 @@ public class Chat : MonoBehaviour {
 		switch (estado.ToString())
 		{			
 			case "tapear":
+				//Evita detectar los valores del mouse
 				textosColor.enabled = false;
 				if (Input.GetMouseButton(0)||Input.GetMouseButton(1) ||Input.GetMouseButton(2)||Input.GetMouseButton(3)||Input.GetMouseButton(4)||Input.GetMouseButton(5))
 					return;
@@ -97,14 +100,7 @@ public class Chat : MonoBehaviour {
 					Tecleo (KeyCode.Space);
 					return;
 				}
-				
-				/*
-				if (Input.GetKeyDown (KeyCode.Backspace)){
-					BorrarTexto();
-					return;
-				}
-				 */
-
+				//Teclea cualquier tecla
 				if (Input.anyKeyDown){
 					if (Verificar())
 						Tecleo(KeyCode.Print);
@@ -144,9 +140,8 @@ public class Chat : MonoBehaviour {
 
 				if (Input.GetKeyDown(KeyCode.Return)){
 					CrearTexto (el,70f,mostrarCorrectamente.text);
-					if (verificadorTexto  != mostrarCorrectamente.text){
-						CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
-						}
+					if (verificadorTexto  != mostrarCorrectamente.text)
+						Error();
 					inidiceDialogo++;
 					textosColor.enabled = false;
 					terminarEscribirCorrectamente = true;
@@ -271,10 +266,10 @@ public class Chat : MonoBehaviour {
 		
 		if (_valor){
 			if (verificadorTexto  != escribriCorrectamente)
-				CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
+				Error();
 		}else {
 			if (dialogoEl[inidiceDialogo].Length != escribriCorrectamente.Length)
-				CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
+				Error();
 		}
 
 		inidiceDialogo++;
@@ -284,9 +279,11 @@ public class Chat : MonoBehaviour {
 		mostrarCorrectamente.text = "";
 		textosColor.text = "";
 		escribriCorrectamente = "";
-		
+	}
 
-
+	private void Error (){
+		CrearTexto(ella,-70,mensajeErrores[Random.Range(0,mensajeErrores.Length)]);
+		GameController.instance.HeartFill(-0.2f);
 	}
 	private void EscribriCorrectamente (){
 		if (terminarEscribirCorrectamente){
@@ -314,7 +311,6 @@ public class Chat : MonoBehaviour {
 			}
 			else 
 				return;
-
 		}
 
 		if (listadoTexto[_indiceListadoTexto].ToString().ToLower()==ObtenerValor()){
@@ -327,6 +323,7 @@ public class Chat : MonoBehaviour {
 			tecleo.Play();
 		}
 	}
+	
 
 	bool Verificar (){
 		verificadorRepetir += ObtenerValor();
@@ -358,6 +355,16 @@ public class Chat : MonoBehaviour {
 		} else {
 			TerminarTexto();			
 		}
+	}
+	private void CrearTexto (GameObject _objeto, float _desfase, string _texto){
+		GameObject _nuevoTextoElla = Instantiate (_objeto,posTexto.anchoredPosition,_objeto.transform.rotation);
+		_nuevoTextoElla.transform.SetParent(padreTextos);
+		_nuevoTextoElla.GetComponent<RectTransform>().anchoredPosition = new Vector3 (_desfase,posTexto.anchoredPosition.y,0f);
+		_nuevoTextoElla.GetComponentInChildren<Text>().text = _texto;
+		posTexto.anchoredPosition = new Vector3 (posTexto.anchoredPosition.x,posTexto.anchoredPosition.y-50f);
+		if (posTexto.anchoredPosition.y <= -280)
+			padreTextos.GetComponent<RectTransform>().anchoredPosition = new Vector3 (0,padreTextos.GetComponent<RectTransform>().anchoredPosition.y+50f,0 );
+		estado = Estado.tapear;
 	}
 	
 	private void TerminarTexto (){
@@ -413,16 +420,6 @@ public class Chat : MonoBehaviour {
 			}
 	}
 
-	private void CrearTexto (GameObject _objeto, float _desfase, string _texto){
-		GameObject _nuevoTextoElla = Instantiate (_objeto,posTexto.anchoredPosition,_objeto.transform.rotation);
-		_nuevoTextoElla.transform.SetParent(padreTextos);
-		_nuevoTextoElla.GetComponent<RectTransform>().anchoredPosition = new Vector3 (_desfase,posTexto.anchoredPosition.y,0f);
-		_nuevoTextoElla.GetComponentInChildren<Text>().text = _texto;
-		posTexto.anchoredPosition = new Vector3 (posTexto.anchoredPosition.x,posTexto.anchoredPosition.y-50f);
-		if (posTexto.anchoredPosition.y <= -280)
-			padreTextos.GetComponent<RectTransform>().anchoredPosition = new Vector3 (0,padreTextos.GetComponent<RectTransform>().anchoredPosition.y+50f,0 );
-		estado = Estado.tapear;
-	}
 	IEnumerator Memoria (){
 		yield return new WaitForSeconds (2f);
 		textosColor.enabled = false;	

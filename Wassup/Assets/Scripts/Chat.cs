@@ -394,7 +394,7 @@ public class Chat : MonoBehaviour {
 
 		while (_valor < _repetir){
 			yield return new WaitForSeconds (_tiempo);
-			if (inidiceDialogo < dialogoEl.Length)
+			if (inidiceDialogo+indiceDesfaseElla < dialogoElla.Length)
 				CrearTexto (ella,-70f,dialogoElla[inidiceDialogo+indiceDesfaseElla]);
 			
 			_valor ++;

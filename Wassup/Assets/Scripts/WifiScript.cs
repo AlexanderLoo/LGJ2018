@@ -1,6 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Prime31.TransitionKit;
+
+
 
 public class WifiScript : MonoBehaviour {
 
@@ -23,7 +28,13 @@ public class WifiScript : MonoBehaviour {
 		else if 
 		(other.gameObject.tag == "corazon") 
 		{
-			print ("ganaste");
+			var pixelater = new PixelateTransition()
+			{
+				nextScene = 2,
+				finalScaleEffect = PixelateTransition.PixelateFinalScaleEffect.ToPoint,
+				duration = 1.0f
+			};
+			TransitionKit.instance.transitionWithDelegate( pixelater );
 		}
 	}
 }

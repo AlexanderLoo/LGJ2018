@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
 	public static GameController instance;
-	public RectTransform[] chatBackgrounds;
 	public Image[] wifiSignals;
 	private int signalIndex;
 	public Image heartFill;
-	public Animator heartAnim, wifiAnim;
+	public Animator heartAnim, wifiAnim, gilbertoAnim, gilbertaAnim;
 
 	[HideInInspector]
 	public bool noSignal, gameOver;
@@ -60,8 +59,7 @@ public class GameController : MonoBehaviour {
 			if (signalIndex != wifiSignals.Length - 1) {
 				signalIndex++;
 			} else {
-				gameOver = true;
-				print ("GameOver");
+				noSignal = true;
 			}
 		}
 	}
@@ -84,9 +82,9 @@ public class GameController : MonoBehaviour {
 
 		timeForWifi -= Time.deltaTime;
 		if (timeForWifi <= 0) {
-			RemoveSignal ();
 			wifiAnim.SetTrigger ("WifiBlinking");
 			timeForWifi = timer;
+			RemoveSignal ();
 		}
 	}
 	//Reducimos el corazón con el tiempo y dependiendo del estado
@@ -94,9 +92,10 @@ public class GameController : MonoBehaviour {
 
 		timeForLove -= Time.deltaTime;
 		if (timeForLove <= 0) {
-			HeartFill (-0.3f);
 			heartAnim.SetTrigger ("HeartDamage");
+			gilbertaAnim.SetTrigger ("Angry");
 			timeForLove = timer;
+			HeartFill (-0.3f);
 		}
 	}
 }

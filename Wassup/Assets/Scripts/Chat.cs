@@ -59,7 +59,7 @@ public class Chat : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		chatEncendido = false;
+		chatEncendido = true;
 		indiceTexto = 0;
 
 		

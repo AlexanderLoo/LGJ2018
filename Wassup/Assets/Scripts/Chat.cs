@@ -143,6 +143,7 @@ public class Chat : MonoBehaviour {
 					textosColor.enabled = true;
 					verificadorTexto = palabrasAnagramas[indiceAnagrama];
 					anagrama.text = palabrasAnagramas[indiceAnagrama].Anagram();
+					indiceLetraAnagrama=0;
 					crearAnagrama = false;
 					cuadroDeTexto.text = " ";
 				}
@@ -315,6 +316,7 @@ public class Chat : MonoBehaviour {
 				listadoLetrasCompletar = palabrasCompletar[indiceCompletarPalabra].ToCharArray();
 			 
 			_indiceListadoTexto = 0;
+			indiceLetraCompletarPalabra = 0;
 			terminarEscribirCorrectamente = false;
 		} 
 
@@ -427,7 +429,7 @@ public class Chat : MonoBehaviour {
 			if (_repetir >= 2){
 				StartCoroutine (MensajesSeguidos(0.5f,_repetir));
 			} else if (_repetir == 1){
-				if (inidiceDialogo < dialogoEl.Length)
+				if (inidiceDialogo+indiceDesfaseElla < dialogoEl.Length)
 					CrearTexto (ella,-55f,dialogoElla[inidiceDialogo+indiceDesfaseElla]);
 				
 				inidiceDialogo++;

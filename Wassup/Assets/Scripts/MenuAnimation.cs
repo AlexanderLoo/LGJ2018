@@ -12,6 +12,7 @@ public class MenuAnimation : MonoBehaviour
     public Color LogoColorFaded;
     private Vector2 LogoFullSize;
     private Vector2 LogoSmallSize;
+	public GameObject Creditstext;
 
     public Button PlayButton;
     public Button CreditsButton;
@@ -22,7 +23,7 @@ public class MenuAnimation : MonoBehaviour
     public Color BSColorOn;
 
     public Image CreditsWindow;
-    public CanvasGroup CreditsPanel;
+    //public CanvasGroup CreditsPanel;
 
     public float flickSpeed;
     public float flickWaitTime;
@@ -99,12 +100,14 @@ public class MenuAnimation : MonoBehaviour
     public void ButtonPlay()
     {
         StartCoroutine(SetBlackscreen());
+		SceneManager.LoadScene("Main");
     }
 
     public void ButtonCredits()
     {
-        CreditsWindow.transform.GetComponentInParent<Animator>().SetBool("isCreditsShowing", true);
-        StartCoroutine(SwitchCredits("True"));
+		Creditstext.SetActive (true);
+		//CreditsWindow.transform.GetComponentInParent<Animator>().SetBool("isCreditsShowing", true);
+        //StartCoroutine(SwitchCredits("True"));
 
     }
 
@@ -115,25 +118,25 @@ public class MenuAnimation : MonoBehaviour
 
     public void ButtonBack()
     {
-        StartCoroutine(SwitchCredits("False"));
-        CreditsWindow.transform.GetComponentInParent<Animator>().SetBool("isCreditsShowing", false);
+        //StartCoroutine(SwitchCredits("False"));
+        //CreditsWindow.transform.GetComponentInParent<Animator>().SetBool("isCreditsShowing", false);
 
     }
 
-    IEnumerator SwitchCredits(string value)
-    {
-        if (value == "False")
-        {
-            CreditsPanel.alpha = 0;
-            CreditsPanel.interactable = false;
-            CreditsPanel.blocksRaycasts = false;
-        }
-        else if (value == "True")
-        {
-            yield return new WaitForSeconds(0.2f);
-            CreditsPanel.alpha = 1;
-            CreditsPanel.interactable = true;
-            CreditsPanel.blocksRaycasts = true;
-        }
-    }
+    //IEnumerator SwitchCredits(string value)
+   // {
+    //    if (value == "False")
+    //    {
+    //        CreditsPanel.alpha = 0;
+    //        CreditsPanel.interactable = false;
+    //        CreditsPanel.blocksRaycasts = false;
+    //    }
+    //    else if (value == "True")
+    //    {
+    //        yield return new WaitForSeconds(0.2f);
+    //        CreditsPanel.alpha = 1;
+    //        CreditsPanel.interactable = true;
+    //        CreditsPanel.blocksRaycasts = true;
+    //    }
+   // }
 }

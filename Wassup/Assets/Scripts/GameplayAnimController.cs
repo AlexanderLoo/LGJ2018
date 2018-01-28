@@ -7,11 +7,13 @@ public class GameplayAnimController : MonoBehaviour
 {
 
     public CanvasGroup PhoneBackground;
+    public CanvasGroup ChatScreen;
     public Image AppGps;
     public Image AppChat;
 
     public float animSpeed;
     public float moveSpeed;
+    public float alphaFadeSpeed;
 
     private Vector2 smallSize;
     private Vector2 bigSize;
@@ -92,6 +94,15 @@ public class GameplayAnimController : MonoBehaviour
                 _icon.rectTransform.anchoredPosition = Vector3.Lerp(smallPos, bigPos, t);
 
                 yield return new WaitForEndOfFrame();
+
+                if (_icon == AppChat)
+                {
+
+                }
+                else if (_icon == AppGps)
+                {
+
+                }
             }
         }
         else if (_toSize == "Small")

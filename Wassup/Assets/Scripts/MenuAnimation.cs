@@ -13,6 +13,12 @@ public class MenuAnimation : MonoBehaviour
     private Vector2 LogoFullSize;
     private Vector2 LogoSmallSize;
 	public GameObject Creditstext;
+	public GameObject Logonon;
+	public GameObject ButoStart;
+	public GameObject ButoCredits;
+	public GameObject ButoExit;
+	public GameObject Butoback;
+	public AudioSource Titlesound;
 
     public Button PlayButton;
     public Button CreditsButton;
@@ -106,6 +112,11 @@ public class MenuAnimation : MonoBehaviour
     public void ButtonCredits()
     {
 		Creditstext.SetActive (true);
+		Logonon.SetActive (false);
+		ButoStart.SetActive (false);
+		ButoCredits.SetActive (false);
+		ButoExit.SetActive (false);
+		Butoback.SetActive (true);
 		//CreditsWindow.transform.GetComponentInParent<Animator>().SetBool("isCreditsShowing", true);
         //StartCoroutine(SwitchCredits("True"));
 
@@ -118,7 +129,14 @@ public class MenuAnimation : MonoBehaviour
 
     public void ButtonBack()
     {
-        //StartCoroutine(SwitchCredits("False"));
+		Creditstext.SetActive (false);
+		Logonon.SetActive (true);
+		ButoStart.SetActive (true);
+		ButoCredits.SetActive (true);
+		ButoExit.SetActive (true);
+		Butoback.SetActive (false);
+		Titlesound.Play ();
+		//StartCoroutine(SwitchCredits("False"));
         //CreditsWindow.transform.GetComponentInParent<Animator>().SetBool("isCreditsShowing", false);
 
     }

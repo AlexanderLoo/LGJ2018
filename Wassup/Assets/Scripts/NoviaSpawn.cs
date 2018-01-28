@@ -9,7 +9,7 @@ public class NoviaSpawn : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Instantiate (novia, pos [Random.Range (0, pos.Length)].transform.position, transform.rotation);
+		Instantiate (novia, pos [Random.Range (0, pos.Length)].transform.position, transform.rotation,gameObject.transform);
 	}
 	
 	// Update is called once per frame

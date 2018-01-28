@@ -24,6 +24,7 @@ public class WifiScript : MonoBehaviour {
 		{
 			if (GameController.instance.signalIndex != 0){
 				GameController.instance.AddSignal();
+				GameController.instance.AddSignal();				
 				Destroy (other.gameObject);
 			}
 				

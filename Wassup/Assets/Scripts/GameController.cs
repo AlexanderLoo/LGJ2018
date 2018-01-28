@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour {
 	public float aditionSpacing = 50;
 
 	void Awake(){
-
 		instance = this;
 	}
 
@@ -104,7 +103,7 @@ public class GameController : MonoBehaviour {
 		timeForLove -= Time.deltaTime;
 		if (timeForLove <= 0) {
 			timeForLove = 1;
-			HeartFill (-0.02f);
+			HeartFill (-0.03f);
 		}
 	}
 //	//Funciones para mantener corazon latiendo

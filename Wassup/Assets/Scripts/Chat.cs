@@ -51,6 +51,7 @@ public class Chat : MonoBehaviour {
 	private char[] listadoLetrasCompletar;
 	private char[] listadoTexto; 
 	private int _indiceListadoTexto;
+	public static bool chatEncendido;
 
 	public Text modo;
 	public AudioSource tecleo;
@@ -58,20 +59,25 @@ public class Chat : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		chatEncendido = false;
 		indiceTexto = 0;
-		if (ellaEmpieza){
-			StartCoroutine (MensajesSeguidos(0.3f,cantidadTextoElla[0]));
-			espera = true;
-			
-		} else {
-		espera = false;
 
-		}
-		letras  = dialogoEl[inidiceDialogo].ToCharArray();
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
+		if (!chatEncendido)
+			return;
+		
+		if (ellaEmpieza){
+			StartCoroutine (MensajesSeguidos(0.3f,cantidadTextoElla[0]));
+			espera = true;
+			letras  = dialogoEl[inidiceDialogo].ToCharArray();
+			ellaEmpieza = false;
+		} 
+
 		
 
 		if (espera){

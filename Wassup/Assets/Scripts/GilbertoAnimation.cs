@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GilbertoAnimation : MonoBehaviour {
 
+
 	private Image image;
 
 	public Sprite[] idleImages;
@@ -17,7 +18,6 @@ public class GilbertoAnimation : MonoBehaviour {
 		image = GetComponent<Image> ();
 	}
 	void Start(){
-
 		StartCoroutine (Flipping ());
 	}
 

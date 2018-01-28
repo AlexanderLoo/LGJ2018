@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class NoviaSpawn : MonoBehaviour {
 
+	public GameObject[] pos;
+	public GameObject novia;
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		Instantiate (novia, pos [Random.Range (0, pos.Length + 1)].transform.position, transform.rotation);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		
 	}
 }

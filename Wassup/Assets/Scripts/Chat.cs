@@ -268,12 +268,12 @@ public class Chat : MonoBehaviour {
 			if (verificadorTexto  != escribriCorrectamente)
 				Error();
 			else
-				GameController.instance.HeartFill(0.1f);
+				GameController.instance.HeartFill(0.2f);
 		}else {
 			if (dialogoEl[inidiceDialogo].Length != escribriCorrectamente.Length)
 				Error();
 			else
-				GameController.instance.HeartFill(0.1f);
+				GameController.instance.HeartFill(0.2f);
 		}
 
 		inidiceDialogo++;
@@ -295,8 +295,10 @@ public class Chat : MonoBehaviour {
 			if (estado == Estado.memoria)
 				StartCoroutine(Memoria());
 			listadoTexto = textosColor.text.ToCharArray();
-			listadoLetrasCompletar = palabrasCompletar[indiceCompletarPalabra].ToCharArray();
-			indiceLetraCompletarPalabra=0;
+			
+			if (indiceCompletarPalabra < palabrasCompletar.Length)
+				listadoLetrasCompletar = palabrasCompletar[indiceCompletarPalabra].ToCharArray();
+			 
 			_indiceListadoTexto = 0;
 			terminarEscribirCorrectamente = false;
 		} 
